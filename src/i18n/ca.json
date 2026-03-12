@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "books":      "Llibres",
+    "about":      "Sobre mi",
+    "reflections":"Reflexions",
+    "circle":     "Cercle Interior",
+    "press":      "Premsa",
+    "contact":    "Contacte"
+  },
+  "hero": {
+    "eyebrow":    "Thriller psicològic",
+    "typewriter": "La veu que pertorbarà la teva manera de llegir thriller",
+    "manifesto":  "«Hi ha veritats que només emergeixen en la foscor. Personatges la lògica interna dels quals et resulta pertorbadorament comprensible.»",
+    "cta_primary":"Llegir el primer capítol gratis",
+    "cta_ghost":  "Veure tots els llibres"
+  },
+  "stats": [
+    { "n": "13", "l": "Anys construint aquest univers" },
+    { "n": "3",  "l": "Novel·les en l'univers Moya Solà" },
+    { "n": "2",  "l": "Idiomes · ES · CA" },
+    { "n": "1",  "l": "Univers narratiu en expansió" }
+  ],
+  "books": {
+    "label":    "L'Obra",
+    "title":    "L'univers {em}Moya Solà{/em}",
+    "subtitle": "Tres novel·les. Dos mons connectats. Un territori psicològic que no deixa anar el lector."
+  },
+  "extracto": {
+    "label":     "004 — Capítol 1",
+    "title":     "Set-centes {em}nits{/em}",
+    "book":      "Swingers: Magicfinger · Jordi Moya Solà",
+    "hook":      "Falten tres pàgines. Les més dures.",
+    "sub":       "El capítol complet és gratuït. Només necessites un correu.",
+    "cta":       "Llegir el capítol complet — gratis",
+    "link":      "Veure la pàgina del llibre"
+  },
+  "manifesto": {
+    "label": "Sobre el Thriller Psicològic",
+    "quote": "«La foscor no és l'absència de llum. És l'espai on les persones descobreixen qui són realment quan ningú les observa. Això és el que escric.»",
+    "attr":  "— Jordi Moya Solà · L'Ametlla del Vallès, Barcelona"
+  },
+  "circle": {
+    "label":     "Comunitat Privada",
+    "title":     "El {em}Cercle{/em} Interior",
+    "body":      "No és un newsletter. És la cambra fosca on treballo: el que no arriba al llibre publicat, el procés real, els personatges que no van sobreviure el tall editorial.",
+    "cta":       "Unir-me — accés gratuït",
+    "badge":     "ACCÉS IMMEDIAT",
+    "tagline":   "Entra en la foscor.",
+    "benefits":  [
+      "Capítol 1 complet — accés immediat",
+      "Arxiu psicològic del protagonista",
+      "Fragments inèdits i descartats",
+      "El procés real d'escriptura",
+      "Accés prioritari a noves obres"
+    ],
+    "disclaimer":"Sense spam · Baixa quan vulguis · RGPD"
+  },
+  "blog": {
+    "label": "Reflexions",
+    "title": "Pensar en veu {em}fosca{/em}",
+    "cta":   "Veure totes"
+  },
+  "about": {
+    "label":  "Sobre l'autor",
+    "title":  "Jordi Moya {em}Solà{/em}",
+    "quote":  "«Porto tretze anys construint personatges que fan coses que ningú hauria d'entendre del tot, però que tothom entén.»",
+    "bio1":   "Nascut a Granollers (Barcelona). Viu a l'Ametlla del Vallès, on escriu sobre el que les persones fan quan ningú les mira.",
+    "bio2":   "Especialitzat en thriller psicològic d'alta intensitat, les seves històries exploren l'espai entre el que som i el que decidim ser sota pressió.",
+    "cta":    "Llegir la història completa"
+  },
+  "contact": {
+    "label": "Contacte",
+    "title": "Parlem sense {em}soroll{/em}",
+    "body":  "Llegeixo tots els missatges. Responc els que requereixen resposta.",
+    "cta1":  "Escriure a en Jordi",
+    "cta2":  "hola@jordimoyasola.com"
+  },
+  "modal": {
+    "title":             "Capítol 1 complet",
+    "subtitle":          "Descarrega el primer capítol complet de Swingers: Magicfinger en PDF. Gratuït.",
+    "placeholder_name":  "Nom *",
+    "placeholder_email": "Correu electrònic *",
+    "gdpr":              "Accepto rebre el capítol i comunicacions de l'autor. (RGPD)",
+    "submit":            "Descarregar el capítol complet",
+    "success":           "✓ Descàrrega iniciada. Benvingut al Cercle Interior.",
+    "error":             "Error en processar. Escriu-nos a hola@jordimoyasola.com",
+    "security":          "🔒 RGPD · Sense spam · Baixa quan vulguis"
+  },
+  "footer": {
+    "tagline": "Thriller psicològic. Personatges que menteixen. Finals que no perdonen.",
+    "copy":    "© {year} Jordi Moya Solà. Tots els drets reservats.",
+    "cols": {
+      "books":       "Llibres",
+      "reflections": "Reflexions",
+      "community":   "Comunitat"
+    }
+  },
+  "cookie": {
+    "text":   "Utilitzem galetes pròpies i de tercers per a analítica i funcionament del lloc.",
+    "more":   "Política de galetes →",
+    "accept": "Acceptar totes",
+    "reject": "Només essencials"
+  },
+  "404": {
+    "label":   "Error 404",
+    "title":   "Pàgina no {em}trobada{/em}",
+    "quote":   "«Hi ha pàgines que desapareixen sense deixar rastre. Aquesta n'és una.»",
+    "body":    "Aquesta pàgina no existeix o ha estat moguda.",
+    "cta1":    "Tornar a l'inici",
+    "cta2":    "Veure els llibres"
+  }
+}

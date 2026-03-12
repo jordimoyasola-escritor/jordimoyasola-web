@@ -1,0 +1,190 @@
+---
+/**
+ * circulo-interior.astro
+ * URL: jordimoyasola.com/circulo-interior
+ * Landing de captación del newsletter — optimizada para conversión
+ */
+import Base   from '../layouts/Base.astro';
+import Nav    from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Círculo Interior — Jordi Moya Solà · Acceso Exclusivo"
+  description="Únete al Círculo Interior de Jordi Moya Solà. Acceso inmediato al primer capítulo completo, el archivo psicológico del protagonista y el proceso real de escritura. Gratuito."
+  canonical="https://www.jordimoyasola.com/circulo-interior"
+>
+  <Nav slot="nav" currentPath="/circulo-interior" />
+
+  <!-- HERO -->
+  <section style="
+    min-height:80vh;display:flex;flex-direction:column;justify-content:center;
+    padding:140px 80px 80px;
+    background:var(--carbon);border-bottom:1px solid var(--border);
+    text-align:center;position:relative;overflow:hidden;
+  ">
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;border:1px solid rgba(212,175,55,.04);border-radius:50%;pointer-events:none;"></div>
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:450px;height:450px;border:1px solid rgba(212,175,55,.06);border-radius:50%;pointer-events:none;"></div>
+
+    <div style="position:relative;z-index:1;max-width:780px;margin:0 auto;">
+      <!-- Indicador activo -->
+      <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:40px;">
+        <div style="width:8px;height:8px;background:var(--gold);border-radius:50%;animation:pulse 2.2s ease-in-out infinite;"></div>
+        <span style="font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;">Acceso gratuito · Exclusivo</span>
+      </div>
+
+      <h1 class="s-title" style="font-size:clamp(44px,6vw,80px);text-align:center;margin-bottom:24px;">
+        El <em>Círculo</em><br>Interior
+      </h1>
+
+      <p style="font-family:var(--serif);font-size:22px;font-style:italic;color:var(--white-dim);line-height:1.6;max-width:640px;margin:0 auto 48px;">
+        «No es una newsletter. Es la cámara oscura donde trabajo: lo que no llega al libro publicado, el proceso real, los personajes que no sobrevivieron al corte editorial.»
+      </p>
+
+      <a href="#form" class="btn-primary" style="font-size:14px;padding:18px 48px;">Unirme ahora — es gratuito</a>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS + FORMULARIO -->
+  <section style="padding:var(--section-pad);background:var(--panel);">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:start;">
+
+      <!-- Lista de beneficios -->
+      <div class="rv" id="beneficios">
+        <div class="s-label">Qué incluye</div>
+        <h2 class="s-title" style="font-size:clamp(28px,3vw,44px);">Lo que no<br>llega al <em>libro</em></h2>
+        <div class="gold-bar"></div>
+
+        <div style="display:flex;flex-direction:column;gap:0;">
+          {[
+            {
+              icon: '◆',
+              title: 'Capítulo 1 completo — acceso inmediato',
+              desc: 'El primer capítulo de Swingers: Magicfinger en PDF. Acceso automático en cuanto te registras.',
+            },
+            {
+              icon: '◆',
+              title: 'El archivo psicológico de Leo',
+              desc: 'Las notas del autor sobre el protagonista: sus mecanismos de defensa, sus contradicciones, lo que nunca aparece en el texto.',
+            },
+            {
+              icon: '◆',
+              title: 'Fragmentos inéditos y descartados',
+              desc: 'Escenas que existieron y desaparecieron. Capítulos que cambiaron de forma radical. El material que quedó fuera del corte editorial.',
+            },
+            {
+              icon: '◆',
+              title: 'El proceso real de escritura',
+              desc: 'Decisiones editoriales, errores, lo que cambié en el último momento y por qué. Sin la versión pulida para el exterior.',
+            },
+            {
+              icon: '◆',
+              title: 'Acceso prioritario a nuevas obras',
+              desc: 'Locked In y Combustión antes de su lanzamiento público. Los miembros del Círculo leen primero.',
+            },
+          ].map(b => (
+            <div style="padding:24px 0;border-bottom:1px solid var(--white-faint);display:flex;gap:20px;align-items:flex-start;">
+              <span style="color:var(--gold);font-size:7px;flex-shrink:0;margin-top:6px;">{b.icon}</span>
+              <div>
+                <div style="font-family:var(--sans);font-size:15px;font-weight:700;color:var(--white);margin-bottom:6px;">{b.title}</div>
+                <div style="font-family:var(--sans);font-size:14px;color:var(--white-dim);line-height:1.7;">{b.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style="margin-top:40px;font-family:var(--sans);font-size:9px;letter-spacing:.3em;color:var(--gold-dim);text-transform:uppercase;display:flex;align-items:center;gap:12px;">
+          <span style="width:24px;height:1px;background:var(--gold);display:inline-block;"></span>
+          Lectores beta desde 2024 · comunidad activa
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <div class="rv d2" id="form">
+        <div style="background:var(--charcoal);border:1px solid var(--border-strong);overflow:hidden;">
+          <div style="padding:52px 44px;">
+            <span style="font-family:var(--sans);font-size:8.5px;letter-spacing:.5em;color:var(--gold);display:block;margin-bottom:20px;">SOLICITAR ACCESO</span>
+            <div style="font-family:var(--serif);font-size:28px;font-style:italic;color:var(--white);line-height:1.3;margin-bottom:12px;">Entra en la oscuridad.<br>Quédate con nosotros.</div>
+            <p style="font-family:var(--sans);font-size:15px;font-style:italic;color:var(--white-dim);margin-bottom:36px;line-height:1.7;">
+              Recibirás el primer capítulo completo y el archivo psicológico del protagonista en los próximos minutos.
+            </p>
+
+            <form id="form-circulo" onsubmit="submitCircleForm(event)">
+              <div class="form-field"><input type="text" id="ci-name" placeholder="Nombre completo *" required></div>
+              <div class="form-field"><input type="email" id="ci-email" placeholder="Correo electrónico *" required></div>
+              <div class="form-field" style="display:flex;align-items:flex-start;gap:12px;padding:6px 0 14px;">
+                <input type="checkbox" id="gdpr-ci" required style="width:auto;margin-top:3px;accent-color:#D4AF37;">
+                <label for="gdpr-ci" style="font-family:var(--sans);font-size:12px;color:var(--menu-gray);line-height:1.6;cursor:pointer;">
+                  Acepto recibir comunicaciones del Círculo Interior. He leído la <a href="/privacidad" style="color:var(--gold);">Política de Privacidad</a>. Puedo darme de baja en cualquier momento. (RGPD)
+                </label>
+              </div>
+              <button type="submit" class="form-submit" id="ci-submit">Unirme al Círculo Interior</button>
+              <div id="ci-msg" style="display:none;margin-top:14px;font-family:var(--sans);font-size:13px;text-align:center;"></div>
+            </form>
+          </div>
+
+          <!-- Lead magnet destacado -->
+          <div style="padding:20px 44px;background:rgba(184,150,90,.05);border-top:1px solid var(--border);display:flex;align-items:flex-start;gap:16px;">
+            <span style="color:var(--gold);font-size:18px;flex-shrink:0;">◆</span>
+            <div>
+              <div style="font-family:var(--sans);font-size:8px;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:4px;">Acceso inmediato incluido</div>
+              <div style="font-family:var(--sans);font-size:14px;font-style:italic;color:var(--white-dim);line-height:1.5;">
+                «El Archivo Psicológico de Leo» — Las notas del autor sobre el protagonista. Lo que nunca aparece en el texto. Solo disponible aquí.
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:16px 44px;background:var(--black);font-family:var(--sans);font-size:8px;letter-spacing:.3em;color:var(--gold-dim);text-align:center;text-transform:uppercase;">
+            Sin spam · Baja en cualquier momento · RGPD compliant
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHIVO DEL PROTAGONISTA -->
+  <section id="archivo" style="padding:var(--section-pad);background:var(--black);border-top:1px solid var(--border);">
+    <div style="max-width:800px;margin:0 auto;text-align:center;">
+      <div class="s-label rv" style="justify-content:center;">Acceso inmediato</div>
+      <h2 class="s-title rv" style="text-align:center;">El Archivo<br>Psicológico de <em>Leo</em></h2>
+      <div class="gold-bar rv" style="margin:0 auto 40px;"></div>
+      <p class="rv" style="font-family:var(--serif);font-size:20px;font-style:italic;color:var(--white-dim);line-height:1.7;margin-bottom:48px;">
+        «Estas son las notas que escribí sobre Leo antes de que el personaje tuviera nombre. Son anteriores al libro. Son, en cierto modo, más reales que el libro.»
+      </p>
+      <a href="#form" class="btn-primary rv">Acceder gratis ahora</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<script>
+  const SUPABASE_URL = 'https://yvbysknlztkcxrcnsczj.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl2Ynlza25senRrY3hyY25zY3pqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3MzE2MzksImV4cCI6MjA4ODMwNzYzOX0._hqy4tFj-zkfqJapGfK9p_BH4EQvIMeBzYGtYlwhSVE';
+
+  async function submitCircleForm(e) {
+    e.preventDefault();
+    const btn = document.getElementById('ci-submit');
+    const msg = document.getElementById('ci-msg');
+    btn.textContent = 'Procesando...'; btn.disabled = true;
+    try {
+      if (SUPABASE_URL && SUPABASE_KEY) {
+        const res = await fetch(SUPABASE_URL + '/rest/v1/circle_members', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Prefer': 'return=minimal' },
+          body: JSON.stringify({ name: document.getElementById('ci-name').value, email: document.getElementById('ci-email').value, source: 'web-circulo', gdpr_accepted: true, active: true, created_at: new Date().toISOString() })
+        });
+        if (res.status === 409) { msg.style.display='block'; msg.style.color='var(--gold)'; msg.textContent='Ya eres miembro del Círculo Interior.'; btn.textContent='✓ Ya registrado'; return; }
+      }
+      msg.style.display = 'block'; msg.style.color = 'var(--gold)';
+      msg.textContent = '✓ Bienvenido al Círculo Interior. Revisa tu correo.';
+      btn.textContent = '✓ Eres del Círculo';
+      document.getElementById('form-circulo').reset();
+    } catch(err) {
+      msg.style.display = 'block'; msg.style.color = '#ff6b6b';
+      msg.textContent = 'Error al registrar. Escríbenos a contacto@jordimoyasola.com';
+      btn.textContent = 'Reintentar'; btn.disabled = false;
+    }
+  }
+  window.submitCircleForm = submitCircleForm;
+</script>

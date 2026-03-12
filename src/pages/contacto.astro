@@ -1,0 +1,193 @@
+---
+/**
+ * contacto.astro — Contacto profesional
+ * URL: jordimoyasola.com/contacto
+ */
+import Base   from '../layouts/Base.astro';
+import Nav    from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Contacto — Jordi Moya Solà"
+  description="Contacto profesional con Jordi Moya Solà. Entrevistas, reseñas, colaboraciones, prensa y lectores."
+  canonical="https://www.jordimoyasola.com/contacto"
+>
+  <Nav slot="nav" currentPath="/contacto" />
+
+  <div style="max-width:calc(var(--max-w)+160px);margin:0 auto;padding:140px 80px 100px;">
+
+    <nav class="breadcrumb">
+      <a href="/">Inicio</a><span>›</span>
+      <span style="color:var(--white-dim);">Contacto</span>
+    </nav>
+
+    <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:100px;align-items:start;">
+
+      <!-- Columna izquierda — info -->
+      <div class="rv">
+        <div class="s-label">007 — Contacto</div>
+        <h1 class="s-title">Hablemos<br>sin <em>ruido</em></h1>
+        <div class="gold-bar"></div>
+
+        <p style="font-family:var(--sans);font-size:16px;color:var(--white-dim);line-height:1.9;margin-bottom:48px;">
+          Leo todos los mensajes. Respondo los que requieren respuesta. Si tienes algo que decirme sobre los libros, el proceso o una colaboración profesional, este es el lugar.
+        </p>
+
+        <!-- Canales -->
+        <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:48px;">
+          {[
+            {
+              icon: '✉',
+              label: 'Email general',
+              value: 'hola@jordimoyasola.com',
+              href: 'mailto:hola@jordimoyasola.com',
+              note: 'Lectores, preguntas, feedback',
+            },
+            {
+              icon: '📰',
+              label: 'Prensa y medios',
+              value: 'prensa@jordimoyasola.com',
+              href: 'mailto:prensa@jordimoyasola.com',
+              note: 'Entrevistas, reseñas, podcasts',
+            },
+            {
+              icon: '🤝',
+              label: 'Colaboraciones',
+              value: 'colaboraciones@jordimoyasola.com',
+              href: 'mailto:colaboraciones@jordimoyasola.com',
+              note: 'Bookclubs, bookstagramers, booktokers',
+            },
+          ].map(c => (
+            <a href={c.href} style="
+              display:flex;gap:20px;align-items:flex-start;
+              padding:24px;background:var(--charcoal);border:1px solid var(--border);
+              text-decoration:none;color:inherit;transition:border-color .3s;
+            " onmouseover="this.style.borderColor='var(--border-strong)'" onmouseout="this.style.borderColor='rgba(212,175,55,.18)'">
+              <span style="font-size:20px;flex-shrink:0;margin-top:2px;">{c.icon}</span>
+              <div>
+                <div style="font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:4px;">{c.label}</div>
+                <div style="font-family:var(--sans);font-size:16px;color:var(--white);margin-bottom:4px;">{c.value}</div>
+                <div style="font-family:var(--sans);font-size:12px;color:var(--menu-gray);font-style:italic;">{c.note}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <!-- Redes -->
+        <div style="margin-bottom:40px;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;">También en</div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            {[
+              { label: 'Instagram', href: 'https://instagram.com/jordimoyasola', tag: '@jordimoyasola' },
+              { label: 'TikTok',    href: 'https://tiktok.com/@jordimoyasola',   tag: '@jordimoyasola' },
+              { label: 'Goodreads', href: 'https://www.goodreads.com/author/show/jordimoyasola', tag: 'jordimoyasola' },
+            ].map(s => (
+              <a href={s.href} target="_blank" rel="noopener" style="
+                display:flex;flex-direction:column;align-items:center;
+                padding:16px 20px;background:var(--charcoal);border:1px solid var(--border);
+                text-decoration:none;transition:border-color .3s;min-width:110px;
+              " onmouseover="this.style.borderColor='var(--border-strong)'" onmouseout="this.style.borderColor='rgba(212,175,55,.18)'">
+                <span style="font-family:var(--sans);font-size:9px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;">{s.label}</span>
+                <span style="font-family:var(--sans);font-size:12px;color:var(--white-dim);">{s.tag}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Tiempo de respuesta -->
+        <div style="padding:18px 24px;border:1px solid var(--border);background:rgba(212,175,55,.04);display:flex;align-items:center;gap:14px;">
+          <div style="width:8px;height:8px;background:var(--gold);border-radius:50%;animation:pulse 2.2s ease-in-out infinite;flex-shrink:0;"></div>
+          <p style="font-family:var(--sans);font-size:13px;color:var(--menu-gray);line-height:1.6;">Respuesta habitual en <strong style="color:var(--white);">24–48 horas</strong> laborables. No respondemos spam ni peticiones genéricas sin contexto.</p>
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <div class="rv d1">
+        <div style="background:var(--charcoal);border:1px solid var(--border-strong);overflow:hidden;">
+          <div style="padding:48px 44px;">
+            <span style="font-family:var(--sans);font-size:8.5px;letter-spacing:.5em;color:var(--gold);display:block;margin-bottom:20px;">FORMULARIO DE CONTACTO</span>
+            <div style="font-family:var(--serif);font-size:26px;font-style:italic;color:var(--white);margin-bottom:8px;">Cuéntame qué tienes en mente.</div>
+            <p style="font-family:var(--sans);font-size:15px;color:var(--menu-gray);margin-bottom:36px;line-height:1.7;">Para prensa, usa directamente <a href="mailto:prensa@jordimoyasola.com" style="color:var(--gold);">prensa@jordimoyasola.com</a> — respuesta garantizada en 48h.</p>
+
+            <form id="form-contact" onsubmit="submitContactForm(event)">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0;">
+                <div class="form-field"><input type="text" id="ct-name" placeholder="Nombre *" required></div>
+                <div class="form-field"><input type="email" id="ct-email" placeholder="Email *" required></div>
+              </div>
+
+              <!-- Motivo -->
+              <div class="form-field" style="margin-top:0;">
+                <select id="ct-subject" required style="background:rgba(240,234,216,.04);border:1px solid var(--border);padding:15px 18px;color:var(--white);font-family:var(--sans);font-size:16px;width:100%;outline:none;transition:border-color .3s;-webkit-appearance:none;cursor:pointer;">
+                  <option value="" disabled selected style="background:var(--charcoal);">Motivo del contacto *</option>
+                  <option value="lector" style="background:var(--charcoal);">Soy lector — tengo algo que contarte</option>
+                  <option value="prensa" style="background:var(--charcoal);">Prensa / entrevista / reseña</option>
+                  <option value="bookclub" style="background:var(--charcoal);">Bookclub / bookstagram / booktok</option>
+                  <option value="editorial" style="background:var(--charcoal);">Agente literario / editorial</option>
+                  <option value="colaboracion" style="background:var(--charcoal);">Colaboración / evento</option>
+                  <option value="otro" style="background:var(--charcoal);">Otro</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <textarea id="ct-message" placeholder="Tu mensaje *" rows="6" required style="resize:vertical;"></textarea>
+              </div>
+
+              <div class="form-field" style="display:flex;align-items:flex-start;gap:12px;padding:4px 0 14px;">
+                <input type="checkbox" id="gdpr-ct" required style="width:auto;margin-top:3px;accent-color:#D4AF37;">
+                <label for="gdpr-ct" style="font-family:var(--sans);font-size:12px;color:var(--menu-gray);line-height:1.6;cursor:pointer;">
+                  Acepto el tratamiento de mis datos para responder a este mensaje. <a href="/privacidad" style="color:var(--gold);">Política de Privacidad</a> (RGPD)
+                </label>
+              </div>
+
+              <button type="submit" class="form-submit" id="ct-submit">Enviar mensaje</button>
+              <div id="ct-msg" style="display:none;margin-top:14px;font-family:var(--sans);font-size:13px;text-align:center;line-height:1.6;"></div>
+            </form>
+          </div>
+
+          <div style="padding:16px 44px;background:var(--black);font-family:var(--sans);font-size:8px;letter-spacing:.3em;color:var(--gold-dim);text-align:center;text-transform:uppercase;">
+            Datos protegidos · RGPD · No cedemos datos a terceros
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</Base>
+
+<script>
+  const SUPABASE_URL = 'https://yvbysknlztkcxrcnsczj.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl2Ynlza25senRrY3hyY25zY3pqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3MzE2MzksImV4cCI6MjA4ODMwNzYzOX0._hqy4tFj-zkfqJapGfK9p_BH4EQvIMeBzYGtYlwhSVE';
+
+  async function submitContactForm(e) {
+    e.preventDefault();
+    const btn = document.getElementById('ct-submit');
+    const msg = document.getElementById('ct-msg');
+    btn.textContent = 'Enviando...'; btn.disabled = true;
+    try {
+      if (SUPABASE_URL && SUPABASE_KEY) {
+        await fetch(SUPABASE_URL + '/rest/v1/contact_messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Prefer': 'return=minimal' },
+          body: JSON.stringify({
+            name:    document.getElementById('ct-name').value,
+            email:   document.getElementById('ct-email').value,
+            subject: document.getElementById('ct-subject').value,
+            message: document.getElementById('ct-message').value,
+            created_at: new Date().toISOString()
+          })
+        });
+      }
+      msg.style.display = 'block'; msg.style.color = 'var(--gold)';
+      msg.textContent = '✓ Mensaje recibido. Te respondo en 24–48 horas laborables.';
+      btn.textContent = '✓ Enviado';
+      document.getElementById('form-contact').reset();
+    } catch(err) {
+      msg.style.display = 'block'; msg.style.color = '#ff6b6b';
+      msg.textContent = 'Error al enviar. Escríbenos directamente a hola@jordimoyasola.com';
+      btn.textContent = 'Reintentar'; btn.disabled = false;
+    }
+  }
+  window.submitContactForm = submitContactForm;
+</script>

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Bloquear endpoints de API
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://www.jordimoyasola.com/sitemap-index.xml

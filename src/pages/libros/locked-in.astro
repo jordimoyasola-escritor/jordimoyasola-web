@@ -1,0 +1,157 @@
+---
+/**
+ * locked-in.astro
+ * URL: jordimoyasola.com/libros/locked-in
+ */
+import Base   from '../../layouts/Base.astro';
+import Nav    from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "Locked In",
+  "alternateName": "La Prisión del Silencio",
+  "author": { "@type": "Person", "name": "Jordi Moya Solà", "url": "https://www.jordimoyasola.com" },
+  "genre": ["Thriller psicológico", "Ficción literaria"],
+  "inLanguage": "es",
+  "url": "https://www.jordimoyasola.com/libros/locked-in",
+  "datePublished": "2026",
+  "numberOfPages": 288,
+  "bookFormat": "https://schema.org/Paperback",
+  "description": "Diagnosticado con el síndrome de enclaustramiento, Damián puede escuchar, sentir y razonar, pero no puede comunicarse. Un thriller sobre la identidad y el silencio.",
+};
+---
+
+<Base
+  title="Locked In — Jordi Moya Solà · La Prisión del Silencio"
+  description="Diagnosticado con el síndrome de enclaustramiento, Damián puede escuchar, sentir y razonar con una claridad demoledora. Pero no puede decirle al mundo que sigue ahí. Un thriller de Jordi Moya Solà."
+  canonical="https://www.jordimoyasola.com/libros/locked-in"
+  schema={schema}
+>
+  <Nav slot="nav" currentPath="/libros" />
+
+  <!-- BREADCRUMB -->
+  <div style="padding:140px 80px 0;max-width:calc(var(--max-w)+160px);margin:0 auto;">
+    <nav class="breadcrumb">
+      <a href="/">Inicio</a><span>›</span>
+      <a href="/libros">Libros</a><span>›</span>
+      <span style="color:var(--white-dim);">Locked In</span>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <section style="
+    padding:40px 80px 100px;background:var(--black);border-bottom:1px solid var(--border);
+    display:grid;grid-template-columns:1fr 1.1fr;gap:100px;align-items:start;
+    max-width:calc(var(--max-w)+160px);margin:0 auto;
+  ">
+    <!-- Portada -->
+    <div class="rv" style="position:sticky;top:120px;">
+      <div style="
+        aspect-ratio:2/3;max-width:320px;
+        background:linear-gradient(155deg,#0a0e14,#060809);
+        border:1px solid rgba(100,148,204,.25);
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        padding:36px 28px;
+        box-shadow:-16px 16px 60px rgba(0,0,0,.9);
+        position:relative;
+        filter:blur(.3px);opacity:.85;
+      ">
+        <div style="position:absolute;top:14px;right:14px;background:#CC0000;color:#fff;font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.2em;padding:6px 12px;">PORTADA PRÓXIMAMENTE</div>
+        <div style="width:60%;height:1px;background:rgba(150,180,220,.6);margin-bottom:20px;"></div>
+        <div style="font-family:var(--serif);font-size:20px;font-weight:900;color:var(--white);text-align:center;line-height:1.2;margin-bottom:8px;">Locked In<br><span style="font-size:13px;letter-spacing:.2em;opacity:.7;">La Prisión del Silencio</span></div>
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:.2em;color:rgba(150,180,220,.7);margin-bottom:20px;text-align:center;">Thriller Psicológico</div>
+        <div style="width:18px;height:18px;border:1px solid rgba(150,180,220,.3);transform:rotate(45deg);opacity:.5;margin-bottom:20px;"></div>
+        <div style="font-family:var(--serif);font-size:11px;font-style:italic;color:rgba(150,180,220,.5);">Jordi Moya Solà</div>
+        <div style="width:60%;height:1px;background:rgba(150,180,220,.4);margin-top:20px;opacity:.4;"></div>
+      </div>
+
+      <!-- Progreso -->
+      <div style="margin-top:20px;max-width:320px;background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.22);padding:20px 24px;">
+        <div style="font-family:var(--sans);font-size:8.5px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;">En producción · 2026</div>
+        <div style="height:2px;background:rgba(255,255,255,.06);">
+          <div style="height:100%;width:81%;background:linear-gradient(to right,var(--gold-dim),var(--gold));"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:7px;">
+          <span style="font-family:var(--sans);font-size:8px;color:rgba(212,175,55,.55);">Borrador</span>
+          <span style="font-family:var(--sans);font-size:8px;color:var(--gold);font-weight:700;">81% completado</span>
+          <span style="font-family:var(--sans);font-size:8px;color:rgba(212,175,55,.55);">Publicación</span>
+        </div>
+      </div>
+
+      <a href="/circulo-interior" class="btn-outline" style="display:block;text-align:center;margin-top:16px;max-width:320px;">
+        Acceso anticipado — únete antes del lanzamiento
+      </a>
+    </div>
+
+    <!-- Contenido -->
+    <div class="rv d1">
+      <div class="s-label">Ficción literaria · Thriller psicológico</div>
+      <h1 class="s-title">Locked <em>In</em></h1>
+      <p style="font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:var(--gold);margin-bottom:20px;">La Prisión del Silencio</p>
+      <div class="gold-bar"></div>
+
+      <!-- Hook -->
+      <div style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--white);border-left:2px solid var(--gold);padding:18px 24px;background:rgba(212,175,55,.04);margin-bottom:32px;line-height:1.6;">
+        «El viernes que Damián Roca salió a caminar al bosque no iba a morirse.<br><em>Solo quería respirar.</em>»
+      </div>
+
+      <p style="font-family:var(--sans);font-size:16px;color:var(--white-dim);line-height:1.9;margin-bottom:20px;">
+        Damián Roca lleva años viviendo una vida que no le pertenece del todo. Una tarde de otoño, un paso en falso en un sendero resbaladizo lo lanza por un barranco. Lo encuentran dos días después, cubierto de barro y sangre, con el cuerpo paralizado pero la mente perfectamente intacta. <strong style="color:var(--white);">Ese es el inicio de su condena.</strong>
+      </p>
+      <p style="font-family:var(--sans);font-size:16px;color:var(--white-dim);line-height:1.9;margin-bottom:32px;">
+        Diagnosticado con el síndrome de enclaustramiento, Damián puede escuchar, sentir, recordar y razonar con una claridad demoledora. Pero no puede hablar. No puede moverse. No puede decirle al mundo que sigue ahí. Asiste impotente a los médicos que lo reducen a datos, al error de diagnóstico que lo convierte en un expediente, a las conversaciones familiares sobre desconectarlo.
+      </p>
+
+      <!-- Cita editorial -->
+      <div style="margin:28px 0;padding:20px 24px;border-left:2px solid rgba(100,148,204,.5);background:rgba(100,148,204,.04);">
+        <p style="font-family:var(--serif);font-size:17px;font-style:italic;color:var(--white);line-height:1.7;margin:0;">«Narrada íntegramente desde la prisión de esa consciencia atrapada, <em>Locked In</em> construye un relato de terror sin monstruos. El horror viene de lo cotidiano, de los procedimientos, de las palabras bienintencionadas que dañan sin saberlo.»</p>
+      </div>
+
+      <!-- Pregunta -->
+      <div style="font-family:var(--serif);font-size:20px;font-style:italic;color:var(--white);text-align:center;border:1px solid var(--border-strong);padding:28px;background:rgba(212,175,55,.03);margin-bottom:32px;">
+        «¿Cuánto tiempo tarda el mundo en dejar de buscarte?»
+      </div>
+
+      <!-- Badges -->
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
+        {['Ficción literaria','Thriller psicológico','Identidad · Consciencia','Error médico · Duelo'].map(t => (
+          <span style="font-family:var(--sans);font-size:11px;color:var(--menu-gray);padding:5px 14px;border:1px solid var(--border);">{t}</span>
+        ))}
+      </div>
+
+      <!-- Referentes -->
+      <div style="margin-bottom:32px;padding:20px 24px;border:1px solid var(--border);background:var(--charcoal);">
+        <p style="font-family:var(--sans);font-size:10px;letter-spacing:.25em;color:var(--gold-dim);margin-bottom:12px;">SI TE GUSTARON</p>
+        <p style="font-family:var(--sans);font-size:15px;color:var(--white-dim);line-height:1.7;font-style:italic;">
+          <em>La escafandra y la mariposa</em> (Bauby) &nbsp;·&nbsp;
+          <em>El paciente</em> (Hannah) &nbsp;·&nbsp;
+          <em>Amnesia</em> (Kellerman)
+        </p>
+      </div>
+
+      <a href="/circulo-interior" class="btn-primary">Acceso anticipado — únete antes del lanzamiento</a>
+    </div>
+  </section>
+
+  <!-- CONEXIÓN CON SWINGERS -->
+  <section style="padding:var(--section-pad);background:var(--panel);border-top:1px solid var(--border);text-align:center;">
+    <div style="max-width:700px;margin:0 auto;">
+      <div class="rv">
+        <div class="s-label" style="justify-content:center;">El Universo</div>
+        <h2 class="s-title" style="text-align:center;">Parte del mismo<br><em>mundo</em></h2>
+        <div class="gold-bar" style="margin:0 auto 32px;"></div>
+        <p style="font-family:var(--sans);font-size:16px;color:var(--white-dim);line-height:1.9;margin-bottom:40px;">
+          <em style="color:var(--white);">Locked In</em> y <em style="color:var(--white);">Swingers: Magicfinger</em> no son novelas independientes. Son dos ángulos distintos sobre el mismo territorio psicológico. Los que lo saben, los leen diferente.
+        </p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+          <a href="/libros/swingers-magicfinger" class="btn-primary">Ver Swingers: Magicfinger</a>
+          <a href="/libros" class="btn-ghost">Todos los libros</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>

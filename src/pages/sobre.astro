@@ -1,0 +1,229 @@
+---
+/**
+ * sobre.astro — Sobre el autor
+ * URL: jordimoyasola.com/sobre
+ */
+import Base   from '../layouts/Base.astro';
+import Nav    from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jordi Moya Solà",
+  "url": "https://www.jordimoyasola.com",
+  "birthPlace": { "@type": "Place", "name": "Granollers, Barcelona" },
+  "homeLocation": { "@type": "Place", "name": "L'Ametlla del Vallès, Barcelona" },
+  "jobTitle": "Escritor",
+  "description": "Escritor español de thriller psicológico. Autor de Swingers: Magicfinger, Locked In y Combustión.",
+  "sameAs": [
+    "https://www.instagram.com/jordimoyasola",
+    "https://www.tiktok.com/@jordimoyasola",
+    "https://www.goodreads.com/author/show/jordimoyasola"
+  ]
+};
+---
+
+<Base
+  title="Sobre Jordi Moya Solà — Escritor de Thriller Psicológico"
+  description="Jordi Moya Solà nació en Granollers en 1978. Lleva trece años construyendo un universo narrativo de thriller psicológico. Autor de Swingers: Magicfinger, Locked In y Combustión."
+  canonical="https://www.jordimoyasola.com/sobre"
+  schema={schema}
+>
+  <Nav slot="nav" currentPath="/sobre" />
+
+  <!-- ═══ HERO AUTOR ═══ -->
+  <section style="
+    padding:140px 80px 100px;
+    background:var(--carbon);
+    border-bottom:1px solid var(--border);
+    display:grid;grid-template-columns:1fr 1.4fr;gap:100px;
+    align-items:center;
+    max-width:calc(var(--max-w) + 160px);margin:0 auto;
+  ">
+    <!-- Retrato -->
+    <div class="rv" style="position:relative;">
+      <!-- Placeholder retrato — reemplazar con foto real -->
+      <div style="
+        width:100%;aspect-ratio:3/4;
+        background:linear-gradient(155deg,#1c1308,#0a0a0a);
+        border:1px solid var(--border);
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        position:relative;overflow:hidden;
+      ">
+        <!-- Marco decorativo -->
+        <div style="position:absolute;top:20px;left:20px;width:44px;height:44px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);opacity:.5;"></div>
+        <div style="position:absolute;bottom:20px;right:20px;width:44px;height:44px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);opacity:.5;"></div>
+        <!-- Monograma -->
+        <div style="font-family:var(--serif);font-size:80px;font-style:italic;color:rgba(212,175,55,.15);line-height:1;margin-bottom:16px;">J</div>
+        <div style=""><img src="/foto-autor.webp" alt="Jordi Moya Solà" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(10%) contrast(1.05);"></div>
+        <div style="font-family:var(--sans);font-size:11px;color:var(--menu-gray);margin-top:8px;text-align:center;padding:0 40px;line-height:1.6;">⚠ Sustituir por fotografía profesional antes del lanzamiento</div>
+      </div>
+      <!-- Badge -->
+      <div style="
+        position:absolute;bottom:-20px;right:-20px;
+        background:var(--charcoal);border:1px solid var(--border-strong);
+        padding:20px 24px;
+      ">
+        <div style="font-family:var(--serif);font-size:13px;font-style:italic;color:var(--gold);">Jordi Moya Solà</div>
+        <div style="font-family:var(--sans);font-size:8px;letter-spacing:.3em;color:var(--menu-gray);text-transform:uppercase;margin-top:4px;">Autor</div>
+      </div>
+    </div>
+
+    <!-- Texto -->
+    <div class="rv d1">
+      <nav class="breadcrumb" style="margin-bottom:32px;">
+        <a href="/">Inicio</a><span>›</span>
+        <span style="color:var(--white-dim);">Sobre mí</span>
+      </nav>
+
+      <div class="s-label">002 — Sobre mí</div>
+      <h1 class="s-title">La voz <em>detrás</em></h1>
+      <div class="gold-bar"></div>
+
+      <blockquote style="
+        font-family:var(--serif);font-size:20px;font-style:italic;
+        color:var(--white);border-left:2px solid var(--gold);
+        padding:20px 28px;background:rgba(212,175,55,.04);
+        margin-bottom:40px;line-height:1.6;
+      ">
+        «Escribo porque necesito comprender el alma humana y, sobre todo, porque creo que cada lector puede reconocerse en las grietas de mis personajes.»
+      </blockquote>
+
+      <p style="font-family:var(--sans);font-size:16px;color:var(--white-dim);line-height:1.9;margin-bottom:20px;">
+        Nací en Granollers, en 1978, y desde hace más de veinte años vivo en L'Ametlla del Vallès, un lugar tranquilo desde el que observo el mundo con cierta distancia, como si cada gesto cotidiano escondiera una historia. Trabajo en el sector de la automoción, en una marca premium, pero mi verdadera vocación siempre ha sido entender a las personas: descifrar sus silencios, sus deseos y sus contradicciones.
+      </p>
+      <p style="font-family:var(--sans);font-size:16px;color:var(--white-dim);line-height:1.9;margin-bottom:20px;">
+        Comencé <em style="color:var(--white);">Swingers: Magicfinger</em> en 2012, en un momento en que mi vida me resultaba tan compleja y fascinante que sentí la necesidad de convertirla en literatura. Durante años, la novela fue creciendo conmigo: se detuvo, cambió, maduró y acabó convirtiéndose en un espejo de lo vivido y aprendido. Tardé trece años en darle la forma definitiva.
+      </p>
+      <p style="font-family:var(--sans);font-size:16px;color:var(--white-dim);line-height:1.9;margin-bottom:40px;">
+        Hoy siento que esta obra es mucho más que una novela: es el resultado de un viaje personal y emocional que me ha enseñado que escribir también puede ser una forma de salvarse.
+      </p>
+
+      <div style="font-family:var(--serif);font-size:28px;font-style:italic;color:var(--gold);margin-bottom:8px;">Jordi Moya Solà</div>
+      <div style="font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:var(--menu-gray);text-transform:uppercase;">L'Ametlla del Vallès, Barcelona</div>
+    </div>
+  </section>
+
+  <!-- ═══ DATOS Y CRONOLOGÍA ═══ -->
+  <section style="padding:var(--section-pad);background:var(--black);border-top:1px solid var(--border);">
+    <div style="max-width:var(--max-w);margin:0 auto;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:96px;">
+
+        <!-- Cronología -->
+        <div class="rv">
+          <div class="s-label">Cronología</div>
+          <h2 class="s-title" style="font-size:clamp(28px,3vw,44px);">Trece años<br>de <em>un libro</em></h2>
+          <div class="gold-bar"></div>
+
+          <div style="display:flex;flex-direction:column;gap:0;position:relative;">
+            <div style="position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:var(--border);"></div>
+            {[
+              { year: '1978', event: 'Nacimiento en Granollers, Barcelona' },
+              { year: '2002', event: 'Se instala en L\'Ametlla del Vallès. Inicio de la vida profesional en el sector premium.' },
+              { year: '2012', event: 'Comienza a escribir Swingers: Magicfinger. Una necesidad, no una decisión.' },
+              { year: '2017', event: 'La novela se detiene. La vida se impone. El manuscrito espera.' },
+              { year: '2021', event: 'Retoma la escritura con perspectiva nueva. El libro cambia de forma.' },
+              { year: '2024', event: 'Lectores beta. Primera respuesta real de lectores externos. Primera validación.' },
+              { year: '2025', event: 'Acuerdo con Editorial Caligrama. Inicio de la edición final.' },
+              { year: '2026', event: 'Publicación de Swingers: Magicfinger. Inicio del universo público.' },
+            ].map((item, i) => (
+              <div style="display:flex;gap:28px;align-items:flex-start;padding:20px 0;position:relative;">
+                <div style="
+                  width:16px;height:16px;flex-shrink:0;
+                  background:var(--black);border:1px solid var(--gold);
+                  transform:rotate(45deg);margin-top:2px;z-index:1;
+                "></div>
+                <div>
+                  <div style="font-family:var(--serif);font-size:16px;font-weight:700;color:var(--gold);margin-bottom:4px;">{item.year}</div>
+                  <div style="font-family:var(--sans);font-size:14px;color:var(--white-dim);line-height:1.7;">{item.event}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Cifras + Filosofía -->
+        <div>
+          <!-- Cifras -->
+          <div class="rv">
+            <div class="s-label">En números</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:64px;">
+              {[
+                { n: '13', l: 'Años en el primer libro' },
+                { n: '113K', l: 'Palabras en Swingers' },
+                { n: '3', l: 'Novelas en el universo' },
+                { n: '2', l: 'Idiomas disponibles' },
+              ].map(s => (
+                <div style="background:var(--charcoal);border:1px solid var(--border);padding:32px 28px;">
+                  <div style="font-family:var(--serif);font-size:44px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px;">{s.n}</div>
+                  <div style="font-family:var(--sans);font-size:12px;letter-spacing:.1em;color:var(--menu-gray);text-transform:uppercase;">{s.l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Filosofía -->
+          <div class="rv d2">
+            <div class="s-label">Filosofía</div>
+            <h2 class="s-title" style="font-size:clamp(24px,2.5vw,36px);">Lo que me<br>mueve a <em>escribir</em></h2>
+            <div class="gold-bar"></div>
+            <p style="font-family:var(--sans);font-size:15px;color:var(--white-dim);line-height:1.9;margin-bottom:20px;">
+              No escribo para entretener, aunque la lectura entrenga. Escribo para iluminar el espacio donde las personas toman decisiones que no comprenden del todo ni en el momento en que las toman.
+            </p>
+            <p style="font-family:var(--sans);font-size:15px;color:var(--white-dim);line-height:1.9;margin-bottom:20px;">
+              Mis personajes no son buenos ni malos. Son coherentes con su propia lógica interna. Y esa coherencia es lo que los hace perturbadores: porque el lector la reconoce.
+            </p>
+            <p style="font-family:var(--sans);font-size:15px;color:var(--white-dim);line-height:1.9;">
+              El thriller psicológico, bien entendido, no es un género de miedo externo. Es el único género que se atreve a preguntarle al lector: <em style="color:var(--white);">¿y tú qué habrías hecho?</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ REFERENTES ═══ -->
+  <section style="padding:var(--section-pad);background:var(--panel);border-top:1px solid var(--border);">
+    <div style="max-width:var(--max-w);margin:0 auto;">
+      <div class="rv" style="text-align:center;margin-bottom:64px;">
+        <div class="s-label" style="justify-content:center;">Influencias</div>
+        <h2 class="s-title" style="text-align:center;">Los libros que<br>construyeron <em>mi voz</em></h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;">
+        {[
+          { author: 'Gillian Flynn', title: 'Gone Girl', note: 'La voz femenina como trampa narrativa' },
+          { author: 'Dennis Lehane', title: 'Mystic River', note: 'El peso del pasado en el presente' },
+          { author: 'Thomas Harris', title: 'El silencio de los corderos', note: 'La inteligencia del antagonista' },
+          { author: 'Patricia Highsmith', title: 'El talento de Mr. Ripley', note: 'La identificación como incomodidad' },
+        ].map(r => (
+          <div class="rv" style="background:var(--charcoal);border:1px solid var(--border);padding:32px 28px;">
+            <div style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--white);margin-bottom:6px;">{r.title}</div>
+            <div style="font-family:var(--sans);font-size:11px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;">{r.author}</div>
+            <div style="width:24px;height:1px;background:var(--border-strong);margin-bottom:16px;"></div>
+            <div style="font-family:var(--sans);font-size:13px;color:var(--menu-gray);line-height:1.6;font-style:italic;">{r.note}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA FINAL ═══ -->
+  <section style="padding:var(--section-pad);background:var(--carbon);border-top:1px solid var(--border);text-align:center;">
+    <div style="max-width:640px;margin:0 auto;">
+      <div class="rv">
+        <div class="s-label" style="justify-content:center;">El siguiente paso</div>
+        <h2 class="s-title" style="text-align:center;font-size:clamp(28px,3vw,44px);">Lee el primer<br>capítulo <em>gratis</em></h2>
+        <p style="font-family:var(--serif);font-size:20px;font-style:italic;color:var(--white-dim);line-height:1.6;margin:24px 0 40px;">
+          La mejor forma de conocer mi voz es leerla. El capítulo 1 de Swingers: Magicfinger está disponible de forma inmediata.
+        </p>
+        <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+          <a href="/libros/swingers-magicfinger#extracto" class="btn-primary">Leer ahora — gratis</a>
+          <a href="/circulo-interior" class="btn-outline">Unirme al Círculo Interior</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>

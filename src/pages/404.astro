@@ -1,0 +1,144 @@
+---
+/**
+ * 404.astro — Página de error 404
+ * URL: jordimoyasola.com/404
+ */
+import Base   from '../layouts/Base.astro';
+import Nav    from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="404 — Página no encontrada · Jordi Moya Solà"
+  description="Esta página no existe o ha sido movida. Vuelve al inicio para explorar las novelas de Jordi Moya Solà."
+>
+  <Nav slot="nav" currentPath="/404" />
+
+  <section style="
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 140px 40px 80px;
+    background: var(--carbon);
+    position: relative;
+    overflow: hidden;
+  ">
+    <!-- Número decorativo de fondo -->
+    <div style="
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--serif);
+      font-size: clamp(200px, 30vw, 400px);
+      font-weight: 900;
+      color: rgba(212,175,55,0.03);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    ">404</div>
+
+    <!-- Anillos decorativos -->
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;border:1px solid rgba(212,175,55,.04);border-radius:50%;pointer-events:none;"></div>
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;height:300px;border:1px solid rgba(212,175,55,.06);border-radius:50%;pointer-events:none;"></div>
+
+    <div style="position:relative;z-index:1;max-width:600px;">
+      <!-- Label -->
+      <div style="
+        font-family: var(--sans);
+        font-size: 9px;
+        letter-spacing: .5em;
+        color: var(--gold);
+        text-transform: uppercase;
+        margin-bottom: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+      ">
+        <span style="width:40px;height:1px;background:var(--border-strong);display:inline-block;"></span>
+        Error 404
+        <span style="width:40px;height:1px;background:var(--border-strong);display:inline-block;"></span>
+      </div>
+
+      <!-- Título -->
+      <h1 style="
+        font-family: var(--serif);
+        font-size: clamp(44px, 7vw, 88px);
+        font-weight: 900;
+        color: var(--white);
+        line-height: .95;
+        margin-bottom: 32px;
+      ">
+        Página no<br>
+        <em style="color:var(--gold);font-style:normal;">encontrada</em>
+      </h1>
+
+      <!-- Línea decorativa -->
+      <div style="width:40px;height:1px;background:var(--gold);margin:0 auto 32px;"></div>
+
+      <!-- Descripción -->
+      <p style="
+        font-family: var(--serif);
+        font-size: 18px;
+        font-style: italic;
+        color: var(--white-dim);
+        line-height: 1.7;
+        margin-bottom: 12px;
+      ">
+        «Hay páginas que desaparecen sin dejar rastro.<br>
+        Esta es una de ellas.»
+      </p>
+      <p style="
+        font-family: var(--sans);
+        font-size: 14px;
+        color: var(--menu-gray);
+        margin-bottom: 52px;
+        line-height: 1.7;
+      ">
+        Esta página no existe o ha sido movida.<br>
+        Puede que hayas seguido un enlace incorrecto.
+      </p>
+
+      <!-- CTAs -->
+      <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+        <a href="/" class="btn-primary">Volver al inicio</a>
+        <a href="/libros" class="btn-ghost">Ver los libros</a>
+      </div>
+
+      <!-- Links útiles -->
+      <div style="
+        margin-top: 64px;
+        padding-top: 40px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        gap: 32px;
+        justify-content: center;
+        flex-wrap: wrap;
+      ">
+        {[
+          { href: '/libros/swingers-magicfinger', label: 'Swingers: Magicfinger' },
+          { href: '/circulo-interior',            label: 'Círculo Interior' },
+          { href: '/sobre',                       label: 'Sobre el autor' },
+          { href: '/contacto',                    label: 'Contacto' },
+        ].map(l => (
+          <a href={l.href} style="
+            font-family: var(--sans);
+            font-size: 12px;
+            letter-spacing: .12em;
+            color: var(--menu-gray);
+            text-decoration: none;
+            transition: color .3s;
+          " onmouseover="this.style.color='var(--gold)'"
+             onmouseout="this.style.color='var(--menu-gray)'"
+          >{l.label}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>

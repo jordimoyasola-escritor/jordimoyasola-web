@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "books":      "Libros",
+    "about":      "Sobre mí",
+    "reflections":"Reflexiones",
+    "circle":     "Círculo Interior",
+    "press":      "Prensa",
+    "contact":    "Contacto"
+  },
+  "hero": {
+    "eyebrow":    "Thriller psicológico",
+    "typewriter": "La voz que perturbará tu forma de leer thriller",
+    "manifesto":  "«Hay verdades que solo emergen en la oscuridad. Personajes cuya lógica interna te resulta perturbadoramente comprensible.»",
+    "cta_primary":"Leer el primer capítulo gratis",
+    "cta_ghost":  "Ver todos los libros"
+  },
+  "stats": [
+    { "n": "13", "l": "Años construyendo este universo" },
+    { "n": "3",  "l": "Novelas en el universo Moya Solà" },
+    { "n": "2",  "l": "Idiomas · ES · CA" },
+    { "n": "1",  "l": "Universo narrativo en expansión" }
+  ],
+  "books": {
+    "label":    "La Obra",
+    "title":    "El universo {em}Moya Solà{/em}",
+    "subtitle": "Tres novelas. Dos mundos conectados. Un territorio psicológico que no suelta al lector."
+  },
+  "extracto": {
+    "label":     "004 — Capítulo 1",
+    "title":     "Setecientas {em}noches{/em}",
+    "book":      "Swingers: Magicfinger · Jordi Moya Solà",
+    "hook":      "Faltan tres páginas. Las más duras.",
+    "sub":       "El capítulo completo es gratis. Solo necesitas un email.",
+    "cta":       "Leer el capítulo completo — gratis",
+    "link":      "Ver la página del libro"
+  },
+  "manifesto": {
+    "label": "Sobre el Thriller Psicológico",
+    "quote": "«La oscuridad no es la ausencia de luz. Es el espacio donde las personas descubren quiénes son realmente cuando nadie las observa. Eso es lo que escribo.»",
+    "attr":  "— Jordi Moya Solà · L'Ametlla del Vallès, Barcelona"
+  },
+  "circle": {
+    "label":     "Comunidad Privada",
+    "title":     "El {em}Círculo{/em} Interior",
+    "body":      "No es una newsletter. Es la cámara oscura donde trabajo: lo que no llega al libro publicado, el proceso real, los personajes que no sobrevivieron al corte editorial.",
+    "cta":       "Unirme — acceso gratuito",
+    "badge":     "ACCESO INMEDIATO",
+    "tagline":   "Entra en la oscuridad.",
+    "benefits":  [
+      "Capítulo 1 completo — acceso inmediato",
+      "Archivo psicológico del protagonista",
+      "Fragmentos inéditos y descartados",
+      "El proceso real de escritura",
+      "Acceso prioritario a nuevas obras"
+    ],
+    "disclaimer":"Sin spam · Baja en cualquier momento · RGPD"
+  },
+  "blog": {
+    "label": "Reflexiones",
+    "title": "Pensar en voz {em}oscura{/em}",
+    "cta":   "Ver todas"
+  },
+  "about": {
+    "label":  "Sobre el autor",
+    "title":  "Jordi Moya {em}Solà{/em}",
+    "quote":  "«Llevo trece años construyendo personajes que hacen cosas que nadie debería entender del todo, pero que todo el mundo entiende.»",
+    "bio1":   "Nacido en Granollers (Barcelona). Vive en L'Ametlla del Vallès, donde escribe sobre lo que las personas hacen cuando nadie las mira.",
+    "bio2":   "Especializado en thriller psicológico de alta intensidad, sus historias exploran el espacio entre lo que somos y lo que decidimos ser bajo presión.",
+    "cta":    "Leer la historia completa"
+  },
+  "contact": {
+    "label": "Contacto",
+    "title": "Hablemos sin {em}ruido{/em}",
+    "body":  "Leo todos los mensajes. Respondo los que requieren respuesta.",
+    "cta1":  "Escribir a Jordi",
+    "cta2":  "hola@jordimoyasola.com"
+  },
+  "modal": {
+    "title":        "Capítulo 1 completo",
+    "subtitle":     "Descarga el primer capítulo completo de Swingers: Magicfinger en PDF. Gratis.",
+    "placeholder_name":  "Nombre *",
+    "placeholder_email": "Correo electrónico *",
+    "gdpr":         "Acepto recibir el capítulo y comunicaciones del autor. (RGPD)",
+    "submit":       "Descargar el capítulo completo",
+    "success":      "✓ Descarga iniciada. Bienvenido al Círculo Interior.",
+    "error":        "Error al procesar. Escríbenos a hola@jordimoyasola.com",
+    "security":     "🔒 RGPD · Sin spam · Baja en cualquier momento"
+  },
+  "footer": {
+    "tagline": "Thriller psicológico. Personajes que mienten. Finales que no perdonan.",
+    "copy":    "© {year} Jordi Moya Solà. Todos los derechos reservados.",
+    "cols": {
+      "books":       "Libros",
+      "reflections": "Reflexiones",
+      "community":   "Comunidad"
+    }
+  },
+  "cookie": {
+    "text":   "Utilizamos cookies propias y de terceros para analítica y funcionamiento del sitio.",
+    "more":   "Política de cookies →",
+    "accept": "Aceptar todas",
+    "reject": "Solo esenciales"
+  },
+  "404": {
+    "label":   "Error 404",
+    "title":   "Página no {em}encontrada{/em}",
+    "quote":   "«Hay páginas que desaparecen sin dejar rastro. Esta es una de ellas.»",
+    "body":    "Esta página no existe o ha sido movida.",
+    "cta1":    "Volver al inicio",
+    "cta2":    "Ver los libros"
+  }
+}

@@ -1,0 +1,158 @@
+---
+/**
+ * combustion.astro
+ * URL: jordimoyasola.com/libros/combustion
+ */
+import Base   from '../../layouts/Base.astro';
+import Nav    from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "Combustión",
+  "alternateName": "La caza del Penitente",
+  "author": { "@type": "Person", "name": "Jordi Moya Solà", "url": "https://www.jordimoyasola.com" },
+  "genre": ["Thriller policial", "Novela negra"],
+  "inLanguage": "es",
+  "url": "https://www.jordimoyasola.com/libros/combustion",
+  "datePublished": "2026",
+  "numberOfPages": 300,
+  "description": "Barcelona, 2010. El inspector Ferrán Alavedra investiga una serie de crímenes imposibles. Una novela sobre el origen de la violencia como sistema.",
+  "locationCreated": { "@type": "Place", "name": "Barcelona, España" }
+};
+---
+
+<Base
+  title="Combustión — Jordi Moya Solà · La caza del Penitente"
+  description="Barcelona, 2010. El inspector Ferrán Alavedra investiga dos crímenes imposibles: quemados desde dentro, sin rastro de acelerador. Una novela sobre el origen de la violencia como sistema. Jordi Moya Solà."
+  canonical="https://www.jordimoyasola.com/libros/combustion"
+  schema={schema}
+>
+  <Nav slot="nav" currentPath="/libros" />
+
+  <div style="padding:140px 80px 0;max-width:calc(var(--max-w)+160px);margin:0 auto;">
+    <nav class="breadcrumb">
+      <a href="/">Inicio</a><span>›</span>
+      <a href="/libros">Libros</a><span>›</span>
+      <span style="color:var(--white-dim);">Combustión</span>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <section style="
+    padding:40px 80px 100px;background:var(--carbon);border-bottom:1px solid var(--border);
+    display:grid;grid-template-columns:1.1fr 1fr;gap:100px;align-items:start;
+    max-width:calc(var(--max-w)+160px);margin:0 auto;
+  ">
+    <!-- Contenido — izquierda en este libro -->
+    <div class="rv">
+      <div class="s-label" style="color:#E8A020;">Thriller Policial Negro · Libro I de la Bilogía</div>
+      <h1 class="s-title"><em>Combustión</em></h1>
+      <p style="font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:#E8A020;margin-bottom:20px;">La caza del Penitente · Barcelona, invierno de 2010</p>
+      <div class="gold-bar" style="background:#E8A020;"></div>
+
+      <!-- Hook -->
+      <div style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--white);border-left:2px solid #E8A020;padding:18px 24px;background:rgba(232,160,32,.05);margin-bottom:32px;line-height:1.6;">
+        «Dos cadáveres. El mismo método. Sin llama visible.<br><em>Alguien confundió el daño con la misericordia.</em>»
+      </div>
+
+      <p style="font-family:var(--sans);font-size:16px;color:var(--white-dim);line-height:1.9;margin-bottom:20px;">
+        Barcelona, febrero de 2010. Dos cuerpos aparecen en escenas de crimen idénticas: quemados desde dentro, sin rastro de acelerador, sin precedente en la toxicología española. El inspector Ferrán Alavedra, de los Mossos d'Esquadra, comprende de inmediato que lo que tiene delante no es un homicidio convencional. Es un método.
+      </p>
+      <p style="font-family:var(--sans);font-size:16px;color:var(--white-dim);line-height:1.9;margin-bottom:32px;">
+        Mientras Ferrán estrecha el cerco sobre el alias «Penitente87», la novela alterna con la voz interior del asesino: Mateo Vidal Ortega, técnico de farmacia sin antecedentes, hombre invisible, instrumento convencido de una misión divina. No es un monstruo. Es la arquitectura de cómo se construye uno.
+      </p>
+
+      <!-- Cita -->
+      <div style="margin:28px 0;padding:20px 24px;border-left:2px solid var(--gold);background:rgba(212,175,55,.04);">
+        <p style="font-family:var(--serif);font-size:17px;font-style:italic;color:var(--white);line-height:1.7;margin:0;">«Una pregunta sobre el origen de la violencia. No la violencia como impulso, sino como sistema. <em>Combustión</em> tiene la honestidad de no responder.»</p>
+      </div>
+
+      <!-- Pregunta -->
+      <div style="font-family:var(--serif);font-size:20px;font-style:italic;color:var(--white);text-align:center;border:1px solid rgba(232,160,32,.3);padding:28px;background:rgba(232,160,32,.03);margin-bottom:32px;">
+        «¿Cuándo cruzas una línea sin saber cuándo?»
+      </div>
+
+      <!-- Badges -->
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
+        {['Thriller policial negro','~300 páginas','Bilogía · Libro I','Barcelona · 2010'].map(t => (
+          <span style="font-family:var(--sans);font-size:11px;color:var(--menu-gray);padding:5px 14px;border:1px solid var(--border);">{t}</span>
+        ))}
+      </div>
+
+      <!-- Protagonista -->
+      <div style="margin-bottom:32px;padding:20px 24px;border:1px solid var(--border);background:var(--charcoal);">
+        <p style="font-family:var(--sans);font-size:10px;letter-spacing:.25em;color:var(--gold-dim);margin-bottom:10px;">PROTAGONISTA</p>
+        <p style="font-family:var(--serif);font-size:18px;color:var(--white);margin-bottom:6px;">Inspector Ferrán Alavedra</p>
+        <p style="font-family:var(--sans);font-size:14px;color:var(--white-dim);line-height:1.7;">Mossos d'Esquadra · Unidad de Homicidios. Lleva la placa como se lleva una deuda. Preciso, frío en apariencia. Su mundo interior existe en destellos que el texto no subraya.</p>
+      </div>
+
+      <a href="/circulo-interior" class="btn-primary">Avísame cuando salga — acceso anticipado</a>
+    </div>
+
+    <!-- Portada + Countdown -->
+    <div class="rv d1" style="position:sticky;top:120px;">
+      <div style="
+        aspect-ratio:2/3;max-width:280px;margin-left:auto;
+        background:linear-gradient(155deg,#1a0800,#0c0500);
+        border:1px solid rgba(232,160,32,.2);
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        padding:32px 24px;
+        box-shadow:-16px 16px 60px rgba(0,0,0,.9);
+        position:relative;opacity:.8;filter:blur(.3px);
+      ">
+        <div style="position:absolute;top:14px;right:14px;background:#CC0000;color:#fff;font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.2em;padding:6px 12px;">PORTADA PRÓXIMAMENTE</div>
+        <div style="width:60%;height:1px;background:#E8A020;margin-bottom:20px;opacity:.7;"></div>
+        <div style="font-family:var(--serif);font-size:18px;font-weight:900;color:var(--white);text-align:center;line-height:1.2;margin-bottom:10px;">Combustión<br><span style="font-size:12px;color:#E8A020;letter-spacing:.12em;">La caza del Penitente</span></div>
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:.2em;color:#E8A020;margin-bottom:20px;text-align:center;">Thriller Policial Negro</div>
+        <div style="width:20px;height:20px;border:1px solid rgba(232,160,32,.3);transform:rotate(45deg);opacity:.5;margin-bottom:20px;"></div>
+        <div style="font-family:var(--serif);font-size:11px;font-style:italic;color:rgba(232,160,32,.5);">Jordi Moya Solà</div>
+        <div style="width:60%;height:1px;background:#E8A020;margin-top:20px;opacity:.3;"></div>
+      </div>
+
+      <!-- Countdown -->
+      <div style="margin-top:20px;max-width:280px;margin-left:auto;background:rgba(232,160,32,.06);border:1px solid rgba(232,160,32,.2);padding:24px 20px;">
+        <div style="font-family:var(--sans);font-size:8.5px;letter-spacing:.4em;color:#E8A020;text-transform:uppercase;margin-bottom:16px;">Lanzamiento estimado · 2026</div>
+        <div id="combustion-countdown" style="display:flex;gap:20px;margin-bottom:20px;">
+          {['days','hours','mins'].map((unit, i) => (
+            <div style="text-align:center;">
+              <div id={`cd-${unit}`} style="font-family:var(--serif);font-size:32px;font-weight:900;color:var(--white);line-height:1;">—</div>
+              <div style="font-family:var(--sans);font-size:8px;letter-spacing:.3em;color:var(--menu-gray);text-transform:uppercase;margin-top:4px;">{unit==='days'?'días':unit==='hours'?'horas':'min'}</div>
+            </div>
+          ))}
+        </div>
+        <!-- Progreso -->
+        <div style="height:2px;background:rgba(255,255,255,.06);">
+          <div style="height:100%;width:72%;background:linear-gradient(to right,#E8A020,#D4AF37);"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:7px;">
+          <span style="font-family:var(--sans);font-size:8px;color:rgba(232,160,32,.55);">Borrador</span>
+          <span style="font-family:var(--sans);font-size:8px;color:#E8A020;font-weight:700;">72% completado</span>
+          <span style="font-family:var(--sans);font-size:8px;color:rgba(232,160,32,.55);">Publicación</span>
+        </div>
+      </div>
+
+      <a href="/circulo-interior" class="btn-outline" style="display:block;text-align:center;margin-top:16px;max-width:280px;margin-left:auto;border-color:rgba(232,160,32,.4);color:#E8A020;" onmouseover="this.style.background='rgba(232,160,32,.08)'" onmouseout="this.style.background='transparent'">
+        Avísame cuando salga →
+      </a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<script>
+  function initCountdown() {
+    const LAUNCH = new Date('2026-12-01T00:00:00');
+    const update = () => {
+      const diff = LAUNCH - new Date();
+      if (diff <= 0) return;
+      document.getElementById('cd-days').textContent  = String(Math.floor(diff/86400000)).padStart(2,'0');
+      document.getElementById('cd-hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+      document.getElementById('cd-mins').textContent  = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    };
+    update(); setInterval(update, 30000);
+  }
+  initCountdown();
+</script>

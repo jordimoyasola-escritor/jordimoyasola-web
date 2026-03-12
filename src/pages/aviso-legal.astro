@@ -1,0 +1,73 @@
+---
+/**
+ * aviso-legal.astro — Aviso Legal
+ * URL: jordimoyasola.com/aviso-legal
+ */
+import Base   from '../layouts/Base.astro';
+import Nav    from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Aviso Legal — Jordi Moya Solà"
+  description="Aviso legal del sitio web jordimoyasola.com. Condiciones de uso, propiedad intelectual y responsabilidad."
+  canonical="https://www.jordimoyasola.com/aviso-legal"
+>
+  <Nav slot="nav" currentPath="/aviso-legal" />
+
+  <div style="max-width:860px;margin:0 auto;padding:140px 80px 100px;">
+    <nav class="breadcrumb">
+      <a href="/">Inicio</a><span>›</span>
+      <span style="color:var(--white-dim);">Aviso Legal</span>
+    </nav>
+
+    <h1 class="s-title" style="font-size:clamp(32px,4vw,52px);margin-bottom:12px;"><em>Aviso</em> Legal</h1>
+    <p style="font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:var(--menu-gray);margin-bottom:48px;text-transform:uppercase;">Última actualización: Marzo 2026</p>
+    <div class="gold-bar"></div>
+
+    <div style="font-family:var(--sans);font-size:16px;color:var(--white-dim);line-height:1.9;">
+
+      <section style="margin-bottom:48px;">
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">1. Datos identificativos</h2>
+        <div style="padding:20px 24px;background:var(--charcoal);border:1px solid var(--border);font-size:15px;line-height:2;">
+          <strong style="color:var(--white);">Titular del sitio web:</strong> Jordi Moya Solà<br>
+          <strong style="color:var(--white);">Domicilio:</strong> L'Ametlla del Vallès, Barcelona, España<br>
+          <strong style="color:var(--white);">Correo electrónico:</strong> <a href="mailto:hola@jordimoyasola.com" style="color:var(--gold);">hola@jordimoyasola.com</a><br>
+          <strong style="color:var(--white);">Nombre de dominio:</strong> www.jordimoyasola.com
+        </div>
+      </section>
+
+      <section style="margin-bottom:48px;">
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">2. Objeto y condiciones de uso</h2>
+        <p style="margin-bottom:16px;">Este sitio web tiene por objeto dar a conocer la obra literaria de Jordi Moya Solà y facilitar la comunicación con lectores, medios y profesionales del sector editorial.</p>
+        <p>El acceso y uso de este sitio web implica la aceptación plena y sin reservas de las presentes condiciones. El titular se reserva el derecho a modificarlas en cualquier momento.</p>
+      </section>
+
+      <section style="margin-bottom:48px;">
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">3. Propiedad intelectual</h2>
+        <p style="margin-bottom:16px;">Todos los contenidos de este sitio web —incluyendo textos, fragmentos literarios, sinopsis, estructura narrativa, diseño y código— son propiedad de Jordi Moya Solà o, en su caso, de Editorial Caligrama, y están protegidos por la legislación vigente en materia de propiedad intelectual.</p>
+        <p style="margin-bottom:16px;">Queda prohibida la reproducción total o parcial de los contenidos sin autorización expresa y escrita del titular.</p>
+        <p>Se permite la cita o referencia de fragmentos breves con fines periodísticos, críticos o académicos, siempre que se cite expresamente la fuente y el autor.</p>
+      </section>
+
+      <section style="margin-bottom:48px;">
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">4. Exclusión de responsabilidad</h2>
+        <p style="margin-bottom:16px;">El titular no garantiza la disponibilidad continua del sitio web ni la ausencia de errores en sus contenidos, aunque realizará los esfuerzos razonables para mantenerlo operativo y actualizado.</p>
+        <p>Los enlaces a sitios web externos (Amazon, Goodreads, Editorial Caligrama, etc.) se facilitan a título informativo. El titular no controla dichos sitios y no asume responsabilidad por sus contenidos.</p>
+      </section>
+
+      <section style="margin-bottom:48px;">
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">5. Legislación aplicable y jurisdicción</h2>
+        <p>Este aviso legal se rige por la legislación española. Para la resolución de cualquier controversia derivada del uso de este sitio web, las partes se someten a los juzgados y tribunales del domicilio del titular, con renuncia expresa a cualquier otro fuero que pudiera corresponderles.</p>
+      </section>
+
+      <section>
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">6. Contacto</h2>
+        <p>Para cualquier consulta relacionada con el presente aviso legal: <a href="mailto:hola@jordimoyasola.com" style="color:var(--gold);">hola@jordimoyasola.com</a></p>
+      </section>
+
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</Base>

@@ -1,0 +1,147 @@
+---
+// Footer.astro — Footer global
+---
+<style>
+  footer { background: var(--carbon); border-top: 1px solid var(--border); }
+
+  .ft-top {
+    padding: 72px 80px;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 56px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ft-logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 18px;
+    color: var(--white);
+    display: block;
+    margin-bottom: 14px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .ft-tag {
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    color: var(--menu-gray);
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-width: 240px;
+  }
+  .ft-social { display: flex; gap: 14px; }
+  .ft-soc-l {
+    width: 36px; height: 36px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    color: var(--gold-dim);
+    text-decoration: none;
+    transition: all .3s;
+  }
+  .ft-soc-l:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-glow); }
+
+  .ft-col h4 {
+    font-family: 'Lato', sans-serif;
+    font-size: 8.5px;
+    letter-spacing: .4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .ft-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .ft-links a {
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    color: var(--menu-gray);
+    text-decoration: none;
+    transition: color .3s;
+  }
+  .ft-links a:hover { color: var(--white); }
+
+  .ft-bot {
+    padding: 22px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ft-copy {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    letter-spacing: .1em;
+    color: var(--menu-gray);
+  }
+  .ft-legal { display: flex; gap: 28px; }
+  .ft-legal a {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    letter-spacing: .05em;
+    color: var(--menu-gray);
+    text-decoration: none;
+    transition: color .3s;
+  }
+  .ft-legal a:hover { color: var(--gold); }
+
+  @media (max-width: 768px) {
+    .ft-top { grid-template-columns: 1fr; padding: 48px 24px; gap: 40px; }
+    .ft-bot { flex-direction: column; gap: 16px; padding: 24px; text-align: center; }
+    .ft-legal { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+
+<footer>
+  <div class="ft-top">
+    <div>
+      <a href="/" class="ft-logo">Jordi Moya Solà</a>
+      <p class="ft-tag">Thriller psicológico de alta intensidad.<br>Editorial Caligrama · Barcelona.</p>
+      <div class="ft-social">
+        <a href="https://instagram.com/jordimoyasola" target="_blank" rel="noopener" class="ft-soc-l" aria-label="Instagram">Ig</a>
+        <a href="https://tiktok.com/@jordimoyasola" target="_blank" rel="noopener" class="ft-soc-l" aria-label="TikTok">Tk</a>
+        <a href="https://www.goodreads.com/author/show/jordimoyasola" target="_blank" rel="noopener" class="ft-soc-l" aria-label="Goodreads">GR</a>
+        <a href="https://amazon.es" target="_blank" rel="noopener" class="ft-soc-l" aria-label="Amazon">Am</a>
+      </div>
+    </div>
+
+    <div class="ft-col">
+      <h4>La Obra</h4>
+      <ul class="ft-links">
+        <li><a href="/libros/swingers-magicfinger">Swingers: Magicfinger</a></li>
+        <li><a href="/libros/locked-in">Locked In</a></li>
+        <li><a href="/libros/combustion">Combustión</a></li>
+        <li><a href="/libros">Todos los libros</a></li>
+      </ul>
+    </div>
+
+    <div class="ft-col">
+      <h4>Navegar</h4>
+      <ul class="ft-links">
+        <li><a href="/sobre">Sobre el autor</a></li>
+        <li><a href="/reflexiones">Reflexiones</a></li>
+        <li><a href="/circulo-interior">Círculo Interior</a></li>
+        <li><a href="/prensa">Prensa y Medios</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="ft-col">
+      <h4>Círculo Interior</h4>
+      <ul class="ft-links">
+        <li><a href="/circulo-interior">Acceder gratis</a></li>
+        <li><a href="/circulo-interior#beneficios">Qué incluye</a></li>
+        <li><a href="/circulo-interior#archivo">Archivo del protagonista</a></li>
+        <li><a href="/libros/swingers-magicfinger#extracto">Leer primer capítulo</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ft-bot">
+    <span class="ft-copy">© {new Date().getFullYear()} Jordi Moya Solà · Todos los derechos reservados</span>
+    <div class="ft-legal">
+      <a href="https://www.caligramaeditorial.com" target="_blank" rel="noopener">Editorial Caligrama</a>
+      <a href="/privacidad">Privacidad</a>
+      <a href="/cookies">Cookies</a>
+      <a href="/aviso-legal">Aviso Legal</a>
+    </div>
+  </div>
+</footer>

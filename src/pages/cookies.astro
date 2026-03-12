@@ -1,0 +1,98 @@
+---
+/**
+ * cookies.astro — Política de Cookies
+ * URL: jordimoyasola.com/cookies
+ */
+import Base   from '../layouts/Base.astro';
+import Nav    from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Política de Cookies — Jordi Moya Solà"
+  description="Política de cookies del sitio web jordimoyasola.com. Qué cookies usamos y cómo gestionarlas."
+  canonical="https://www.jordimoyasola.com/cookies"
+>
+  <Nav slot="nav" currentPath="/cookies" />
+
+  <div style="max-width:860px;margin:0 auto;padding:140px 80px 100px;">
+    <nav class="breadcrumb">
+      <a href="/">Inicio</a><span>›</span>
+      <span style="color:var(--white-dim);">Política de Cookies</span>
+    </nav>
+
+    <h1 class="s-title" style="font-size:clamp(32px,4vw,52px);margin-bottom:12px;">Política de <em>Cookies</em></h1>
+    <p style="font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:var(--menu-gray);margin-bottom:48px;text-transform:uppercase;">Última actualización: Marzo 2026</p>
+    <div class="gold-bar"></div>
+
+    <div style="font-family:var(--sans);font-size:16px;color:var(--white-dim);line-height:1.9;">
+
+      <section style="margin-bottom:48px;">
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">¿Qué son las cookies?</h2>
+        <p>Las cookies son pequeños archivos de texto que los sitios web guardan en tu dispositivo cuando los visitas. Permiten que el sitio recuerde tus preferencias o analice cómo navegas por él.</p>
+      </section>
+
+      <section style="margin-bottom:48px;">
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">Cookies que utilizamos</h2>
+
+        <div style="display:flex;flex-direction:column;gap:2px;">
+          {[
+            {
+              categoria: 'Esenciales',
+              color: 'var(--gold)',
+              desc: 'Necesarias para el funcionamiento básico del sitio. No requieren consentimiento.',
+              cookies: [
+                { nombre: 'session', origen: 'Propio', duracion: 'Sesión', descripcion: 'Gestión de la sesión del usuario' },
+              ],
+            },
+            {
+              categoria: 'Analítica',
+              color: '#6494cc',
+              desc: 'Nos permiten entender cómo usan el sitio los visitantes de forma anónima. Requieren consentimiento.',
+              cookies: [
+                { nombre: '_ga, _gid', origen: 'Google Analytics', duracion: '2 años / 24h', descripcion: 'Estadísticas de visitas anonimizadas' },
+              ],
+            },
+          ].map(cat => (
+            <div style="padding:28px 28px;background:var(--charcoal);border:1px solid var(--border);">
+              <div style={`font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:${cat.color};text-transform:uppercase;margin-bottom:10px;`}>{cat.categoria}</div>
+              <p style="font-size:15px;margin-bottom:16px;">{cat.desc}</p>
+              {cat.cookies.map(c => (
+                <div style="padding:12px 16px;background:var(--black);border:1px solid rgba(255,255,255,.05);font-size:14px;">
+                  <strong style="color:var(--white);">{c.nombre}</strong> — {c.origen} — <em>{c.duracion}</em><br>
+                  <span style="color:var(--menu-gray);">{c.descripcion}</span>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style="margin-bottom:48px;">
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">Cómo gestionar las cookies</h2>
+        <p style="margin-bottom:16px;">Puedes aceptar, rechazar o eliminar las cookies en cualquier momento:</p>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
+          {[
+            { nav: 'Chrome', url: 'https://support.google.com/chrome/answer/95647' },
+            { nav: 'Firefox', url: 'https://support.mozilla.org/es/kb/Borrar%20cookies' },
+            { nav: 'Safari', url: 'https://support.apple.com/es-es/guide/safari/sfri11471' },
+            { nav: 'Edge', url: 'https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge' },
+          ].map(b => (
+            <li style="padding:12px 20px;background:var(--charcoal);border:1px solid var(--border);">
+              <a href={b.url} target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;font-size:15px;">{b.nav} — instrucciones oficiales →</a>
+            </li>
+          ))}
+        </ul>
+        <p style="margin-top:16px;font-size:15px;">Ten en cuenta que deshabilitar determinadas cookies puede afectar a la funcionalidad del sitio.</p>
+      </section>
+
+      <section>
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">Contacto</h2>
+        <p>Para cualquier duda sobre el uso de cookies, escríbenos a <a href="mailto:privacidad@jordimoyasola.com" style="color:var(--gold);">privacidad@jordimoyasola.com</a>.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</Base>

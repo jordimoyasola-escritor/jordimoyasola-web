@@ -1,0 +1,89 @@
+---
+/**
+ * reflexiones/index.astro
+ * URL: jordimoyasola.com/reflexiones
+ * Lista todos los artículos del blog
+ */
+import { getCollection } from 'astro:content';
+import Base   from '../../layouts/Base.astro';
+import Nav    from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const articles = (await getCollection('reflexiones'))
+  .sort((a, b) => b.data.date.localeCompare(a.data.date));
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Reflexiones — Jordi Moya Solà",
+  "description": "Notas sobre el proceso de escritura, la psicología del género thriller y las decisiones que no aparecen en el texto final.",
+  "url": "https://www.jordimoyasola.com/reflexiones",
+  "author": {
+    "@type": "Person",
+    "name": "Jordi Moya Solà",
+    "url": "https://www.jordimoyasola.com"
+  }
+};
+---
+
+<Base
+  title="Reflexiones — Jordi Moya Solà · Thriller Psicológico"
+  description="Notas sobre el proceso de escritura, la psicología del género thriller y las decisiones editoriales que no aparecen en el texto final."
+  canonical="https://www.jordimoyasola.com/reflexiones"
+  schema={schema}
+>
+  <Nav slot="nav" currentPath="/reflexiones" />
+
+  <div style="max-width:var(--max-w);margin:0 auto;padding:140px 80px 100px;">
+
+    <nav class="breadcrumb" aria-label="Ruta de navegación">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <span style="color:var(--white-dim);">Reflexiones</span>
+    </nav>
+
+    <div style="margin-bottom:80px;">
+      <div class="s-label rv">006 — Reflexiones</div>
+      <h1 class="s-title rv">Pensar en<br>voz <em>oscura</em></h1>
+      <div class="gold-bar rv"></div>
+      <p class="rv" style="font-family:var(--sans);font-size:16px;color:var(--menu-gray);max-width:560px;line-height:1.8;">
+        Notas sobre el proceso, la psicología del género y las decisiones que no aparecen en el texto final.
+      </p>
+    </div>
+
+    <!-- Grid artículos -->
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:2px;">
+      {articles.map((a, i) => (
+        <a
+          href={`/reflexiones/${a.slug}`}
+          class={`rv${i>0?' d'+Math.min(i,4):''}`}
+          style={`
+            display:flex;flex-direction:column;
+            background:var(--charcoal);border:1px solid var(--border);
+            overflow:hidden;text-decoration:none;color:inherit;
+            transition:border-color .4s;
+            ${i > 0 ? 'grid-column: span 1;' : 'grid-column: span 2;'}
+          `}
+          onmouseover="this.style.borderColor='rgba(212,175,55,.5)'"
+          onmouseout="this.style.borderColor='rgba(212,175,55,.18)'"
+        >
+          <div style={`height:${i===0?'300':'200'}px;background:linear-gradient(155deg,#131008,#080808);position:relative;`}>
+            <div style="position:absolute;bottom:20px;left:20px;font-family:var(--sans);font-size:7px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;background:rgba(8,8,8,.85);padding:6px 14px;">{a.data.tag}</div>
+          </div>
+          <div style="padding:32px;flex:1;display:flex;flex-direction:column;">
+            <div style="font-family:var(--sans);font-size:8px;letter-spacing:.4em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:12px;">
+              {a.data.date}
+              {a.data.readTime && ` · ${a.data.readTime} min`}
+            </div>
+            <h2 style={`font-family:var(--serif);font-size:${i===0?'26':'20'}px;font-weight:700;color:var(--white);line-height:1.25;margin-bottom:14px;flex:1;`}>{a.data.title}</h2>
+            <p style="font-family:var(--sans);font-size:15px;color:var(--white-dim);line-height:1.7;margin-bottom:20px;">{a.data.description}</p>
+            <div style="font-family:var(--sans);font-size:11px;letter-spacing:.2em;color:var(--gold);display:flex;align-items:center;gap:8px;">Leer →</div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+  </div>
+
+  <Footer slot="footer" />
+</Base>

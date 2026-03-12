@@ -1,0 +1,203 @@
+---
+/**
+ * prensa.astro — Kit de prensa
+ * URL: jordimoyasola.com/prensa
+ * Para periodistas, booktubers, podcasters y agentes literarios
+ */
+import Base   from '../layouts/Base.astro';
+import Nav    from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Prensa y Medios — Jordi Moya Solà · Kit de Prensa"
+  description="Kit de prensa de Jordi Moya Solà. Biografías en distintas extensiones, notas de prensa, imágenes de alta resolución y contacto directo para entrevistas y reseñas."
+  canonical="https://www.jordimoyasola.com/prensa"
+>
+  <Nav slot="nav" currentPath="/prensa" />
+
+  <div style="max-width:var(--max-w);margin:0 auto;padding:140px 80px 100px;">
+
+    <nav class="breadcrumb">
+      <a href="/">Inicio</a><span>›</span>
+      <span style="color:var(--white-dim);">Prensa y Medios</span>
+    </nav>
+
+    <div style="margin-bottom:80px;">
+      <div class="s-label rv">Prensa y Medios</div>
+      <h1 class="s-title rv">Kit de <em>Prensa</em></h1>
+      <div class="gold-bar rv"></div>
+      <p class="rv" style="font-family:var(--sans);font-size:16px;color:var(--menu-gray);max-width:600px;line-height:1.8;">
+        Material oficial para medios, booktubers, podcasts y agentes literarios. Todo lo necesario para cubrir la obra de Jordi Moya Solà sin necesidad de intercambiar emails previos.
+      </p>
+    </div>
+
+    <!-- CONTACTO RÁPIDO -->
+    <div class="rv" style="background:rgba(212,175,55,.05);border:1px solid var(--border-strong);padding:36px 40px;margin-bottom:80px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+      <div>
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;">Contacto de prensa</div>
+        <div style="font-family:var(--serif);font-size:20px;color:var(--white);">Respuesta en 24–48 horas laborables</div>
+      </div>
+      <a href="mailto:prensa@jordimoyasola.com" class="btn-primary">prensa@jordimoyasola.com</a>
+    </div>
+
+    <!-- BIOGRAFÍAS -->
+    <section style="margin-bottom:80px;">
+      <h2 style="font-family:var(--serif);font-size:32px;font-weight:700;color:var(--white);margin-bottom:40px;padding-bottom:20px;border-bottom:1px solid var(--border);">
+        Biografías <em style="color:var(--gold);">oficiales</em>
+      </h2>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+
+        <!-- Bio corta -->
+        <div style="background:var(--charcoal);border:1px solid var(--border);padding:36px;">
+          <div style="font-family:var(--sans);font-size:8px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;">Versión corta · ~100 palabras</div>
+          <p style="font-family:var(--sans);font-size:15px;color:var(--white-dim);line-height:1.8;margin-bottom:24px;">
+            Jordi Moya Solà (Granollers, 1978) es escritor de thriller psicológico. Autor de <em style="color:var(--white);">Swingers: Magicfinger</em>, publicado con Editorial Caligrama, y de las novelas en producción <em style="color:var(--white);">Locked In</em> y <em style="color:var(--white);">Combustión</em>. Sus libros exploran el territorio psicológico donde el deseo, la identidad y la violencia se intersectan. Vive en L'Ametlla del Vallès, Barcelona.
+          </p>
+          <button onclick="copyText('bio-short')" style="font-family:var(--sans);font-size:10px;letter-spacing:.2em;color:var(--gold);background:none;border:1px solid var(--border);padding:8px 16px;cursor:pointer;text-transform:uppercase;transition:all .3s;" onmouseover="this.style.background='var(--gold-glow)'" onmouseout="this.style.background='none'">
+            Copiar texto
+          </button>
+          <span id="bio-short-copy" style="display:none;font-family:var(--sans);font-size:10px;color:var(--gold);margin-left:12px;">✓ Copiado</span>
+        </div>
+
+        <!-- Bio larga -->
+        <div style="background:var(--charcoal);border:1px solid var(--border);padding:36px;">
+          <div style="font-family:var(--sans);font-size:8px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;">Versión larga · ~250 palabras</div>
+          <p style="font-family:var(--sans);font-size:15px;color:var(--white-dim);line-height:1.8;margin-bottom:16px;">
+            Jordi Moya Solà nació en Granollers en 1978 y desde hace más de veinte años vive en L'Ametlla del Vallès, Barcelona. Trabaja en el sector de la automoción, pero su vocación siempre ha sido entender a las personas: descifrar sus silencios, sus deseos y sus contradicciones.
+          </p>
+          <p style="font-family:var(--sans);font-size:15px;color:var(--white-dim);line-height:1.8;margin-bottom:16px;">
+            Comenzó <em style="color:var(--white);">Swingers: Magicfinger</em> en 2012, en un momento en que necesitó convertir la complejidad de su vida en literatura. Durante trece años la novela creció con él, se detuvo, cambió de forma y maduró hasta convertirse en un exploración del deseo como fuerza que altera la identidad, el poder y la percepción de la realidad.
+          </p>
+          <p style="font-family:var(--sans);font-size:15px;color:var(--white-dim);line-height:1.8;margin-bottom:24px;">
+            Su universo narrativo incluye también <em style="color:var(--white);">Locked In</em> —un thriller sobre la consciencia atrapada en un cuerpo inerte— y <em style="color:var(--white);">Combustión</em>, thriller policial negro ambientado en Barcelona en 2010. Publica con Editorial Caligrama.
+          </p>
+          <button onclick="copyText('bio-long')" style="font-family:var(--sans);font-size:10px;letter-spacing:.2em;color:var(--gold);background:none;border:1px solid var(--border);padding:8px 16px;cursor:pointer;text-transform:uppercase;transition:all .3s;" onmouseover="this.style.background='var(--gold-glow)'" onmouseout="this.style.background='none'">
+            Copiar texto
+          </button>
+          <span id="bio-long-copy" style="display:none;font-family:var(--sans);font-size:10px;color:var(--gold);margin-left:12px;">✓ Copiado</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FICHAS DE LIBROS -->
+    <section style="margin-bottom:80px;">
+      <h2 style="font-family:var(--serif);font-size:32px;font-weight:700;color:var(--white);margin-bottom:40px;padding-bottom:20px;border-bottom:1px solid var(--border);">
+        Fichas de <em style="color:var(--gold);">libros</em>
+      </h2>
+
+      {[
+        {
+          title: 'Swingers: Magicfinger',
+          genre: 'Thriller Erótico Psicológico',
+          pages: '320',
+          isbn: 'Pendiente de asignación',
+          editorial: 'Editorial Caligrama',
+          year: '2026',
+          desc: 'Tras una infidelidad que resquebraja los cimientos de su vida, Leo y Clara intentan salvar su matrimonio adentrándose en el mundo oculto del intercambio de parejas. Una espiral de secretos, obsesión y manipulación.',
+          status: 'En proceso editorial — publicación 2026',
+          color: 'var(--gold)',
+        },
+        {
+          title: 'Locked In',
+          genre: 'Thriller Psicológico · Ficción Literaria',
+          pages: '288',
+          isbn: 'Pendiente',
+          editorial: 'Por confirmar',
+          year: '2026',
+          desc: 'Diagnosticado con el síndrome de enclaustramiento, Damián puede escuchar, sentir y razonar, pero no puede comunicarse. Un thriller sobre la identidad, el silencio y el error médico como violencia cotidiana.',
+          status: 'En producción — 81% completado',
+          color: '#6494cc',
+        },
+        {
+          title: 'Combustión',
+          genre: 'Thriller Policial Negro · Bilogía Libro I',
+          pages: '~300',
+          isbn: 'Pendiente',
+          editorial: 'Por confirmar',
+          year: '2026-2027',
+          desc: 'Barcelona, 2010. El inspector Ferrán Alavedra investiga dos crímenes imposibles. El asesino —el Penitente— razona con la precisión de un creyente. Una novela sobre el origen de la violencia como sistema.',
+          status: 'En producción — 72% completado',
+          color: '#E8A020',
+        },
+      ].map(book => (
+        <div style={`background:var(--charcoal);border:1px solid rgba(${book.color==='var(--gold)'?'212,175,55':''},.22);padding:36px;margin-bottom:2px;display:grid;grid-template-columns:1fr 2fr;gap:40px;`}>
+          <div>
+            <div style={`font-family:var(--sans);font-size:8px;letter-spacing:.4em;color:${book.color};text-transform:uppercase;margin-bottom:12px;`}>{book.genre}</div>
+            <div style="font-family:var(--serif);font-size:24px;font-weight:900;color:var(--white);margin-bottom:20px;">{book.title}</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              {[
+                ['Editorial', book.editorial],
+                ['Páginas', book.pages],
+                ['ISBN', book.isbn],
+                ['Año previsto', book.year],
+              ].map(([k, v]) => (
+                <div style="display:flex;gap:12px;">
+                  <span style="font-family:var(--sans);font-size:11px;letter-spacing:.15em;color:var(--menu-gray);text-transform:uppercase;min-width:80px;">{k}</span>
+                  <span style="font-family:var(--sans);font-size:13px;color:var(--white-dim);">{v}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p style="font-family:var(--sans);font-size:15px;color:var(--white-dim);line-height:1.8;margin-bottom:20px;">{book.desc}</p>
+            <div style={`font-family:var(--sans);font-size:11px;letter-spacing:.1em;color:${book.color};padding:10px 16px;border:1px solid rgba(212,175,55,.2);display:inline-block;`}>{book.status}</div>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- IMÁGENES — instrucciones -->
+    <section style="margin-bottom:80px;">
+      <h2 style="font-family:var(--serif);font-size:32px;font-weight:700;color:var(--white);margin-bottom:40px;padding-bottom:20px;border-bottom:1px solid var(--border);">
+        Imágenes en <em style="color:var(--gold);">alta resolución</em>
+      </h2>
+      <div style="background:var(--charcoal);border:1px solid var(--border);padding:40px;text-align:center;">
+        <div style="font-family:var(--serif);font-size:22px;font-style:italic;color:var(--white-dim);margin-bottom:20px;">Fotografías del autor y portadas disponibles bajo solicitud</div>
+        <p style="font-family:var(--sans);font-size:15px;color:var(--menu-gray);margin-bottom:32px;line-height:1.7;max-width:500px;margin-left:auto;margin-right:auto;">Para solicitar fotografías en alta resolución del autor o imágenes de portada, contacta directamente por email indicando el medio y el uso previsto.</p>
+        <a href="mailto:prensa@jordimoyasola.com?subject=Solicitud%20imágenes%20alta%20resolución" class="btn-primary">Solicitar imágenes</a>
+      </div>
+    </section>
+
+    <!-- DISPONIBILIDAD PARA MEDIOS -->
+    <section>
+      <h2 style="font-family:var(--serif);font-size:32px;font-weight:700;color:var(--white);margin-bottom:40px;padding-bottom:20px;border-bottom:1px solid var(--border);">
+        Disponibilidad para <em style="color:var(--gold);">entrevistas</em>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+        {[
+          { icon: '🎙', format: 'Podcast / Audio', desc: 'Disponible para podcasts literarios, de thriller, psicología o narrativa. Formato largo preferido.' },
+          { icon: '📹', format: 'Video / Booktube', desc: 'Entrevistas en vídeo, presenciales en Barcelona o remotas. Disponibilidad flexible.' },
+          { icon: '✍', format: 'Prensa escrita', desc: 'Entrevistas escritas, reseñas, artículos de opinión. Respuesta a cuestionarios en 72 horas.' },
+        ].map(f => (
+          <div style="background:var(--charcoal);border:1px solid var(--border);padding:36px;">
+            <div style="font-size:28px;margin-bottom:16px;">{f.icon}</div>
+            <div style="font-family:var(--sans);font-size:13px;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;">{f.format}</div>
+            <p style="font-family:var(--sans);font-size:14px;color:var(--white-dim);line-height:1.7;">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:40px;text-align:center;">
+        <a href="/contacto" class="btn-outline">Formulario de contacto profesional →</a>
+      </div>
+    </section>
+
+  </div>
+
+  <Footer slot="footer" />
+</Base>
+
+<script>
+  function copyText(id) {
+    const texts = {
+      'bio-short': 'Jordi Moya Solà (Granollers, 1978) es escritor de thriller psicológico. Autor de Swingers: Magicfinger, publicado con Editorial Caligrama, y de las novelas en producción Locked In y Combustión. Sus libros exploran el territorio psicológico donde el deseo, la identidad y la violencia se intersectan. Vive en L\'Ametlla del Vallès, Barcelona.',
+      'bio-long': 'Jordi Moya Solà nació en Granollers en 1978 y desde hace más de veinte años vive en L\'Ametlla del Vallès, Barcelona. Trabaja en el sector de la automoción, pero su vocación siempre ha sido entender a las personas: descifrar sus silencios, sus deseos y sus contradicciones.\n\nComenzó Swingers: Magicfinger en 2012, en un momento en que necesitó convertir la complejidad de su vida en literatura. Durante trece años la novela creció con él, se detuvo, cambió de forma y maduró hasta convertirse en un exploración del deseo como fuerza que altera la identidad, el poder y la percepción de la realidad.\n\nSu universo narrativo incluye también Locked In —un thriller sobre la consciencia atrapada en un cuerpo inerte— y Combustión, thriller policial negro ambientado en Barcelona en 2010. Publica con Editorial Caligrama.',
+    };
+    navigator.clipboard.writeText(texts[id] || '').then(() => {
+      const el = document.getElementById(id + '-copy');
+      if (el) { el.style.display = 'inline'; setTimeout(() => el.style.display = 'none', 2500); }
+    });
+  }
+  window.copyText = copyText;
+</script>

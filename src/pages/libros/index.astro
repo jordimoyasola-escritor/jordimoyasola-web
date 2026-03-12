@@ -1,0 +1,185 @@
+---
+/**
+ * libros/index.astro — Catálogo de libros
+ * URL: jordimoyasola.com/libros
+ */
+import Base   from '../../layouts/Base.astro';
+import Nav    from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const books = [
+  {
+    href:     '/libros/swingers-magicfinger',
+    num:      'I',
+    status:   'En breve',
+    pct:      95,
+    color:    'var(--gold)',
+    title:    'Swingers: Magicfinger',
+    subtitle: '',
+    genre:    'Thriller Erótico Psicológico',
+    year:     '2026',
+    editorial:'Editorial Caligrama',
+    pages:    '320',
+    desc:     'Tras una infidelidad que resquebraja los cimientos de su vida, Leo y Clara intentan salvar su matrimonio adentrándose en el mundo oculto del intercambio de parejas. Una espiral de secretos, obsesión y manipulación.',
+    hook:     '«¿Hasta dónde estás dispuesto a llegar para no perder lo que más amas?»',
+    badge:    null,
+  },
+  {
+    href:     '/libros/locked-in',
+    num:      'II',
+    status:   'En producción',
+    pct:      81,
+    color:    '#6494cc',
+    title:    'Locked In',
+    subtitle: 'La Prisión del Silencio',
+    genre:    'Thriller Psicológico · Ficción Literaria',
+    year:     '2026',
+    editorial:'Por confirmar',
+    pages:    '288',
+    desc:     'Diagnosticado con el síndrome de enclaustramiento, Damián puede escuchar, sentir y razonar con una claridad demoledora. Pero no puede hablar. No puede moverse. No puede decirle al mundo que sigue ahí.',
+    hook:     '«¿Cuánto tiempo tarda el mundo en dejar de buscarte?»',
+    badge:    null,
+  },
+  {
+    href:     '/libros/combustion',
+    num:      'III',
+    status:   'Próximamente',
+    pct:      72,
+    color:    '#E8A020',
+    title:    'Combustión',
+    subtitle: 'La caza del Penitente',
+    genre:    'Thriller Policial Negro · Bilogía I',
+    year:     '2026–2027',
+    editorial:'Por confirmar',
+    pages:    '~300',
+    desc:     'Barcelona, 2010. El inspector Ferrán Alavedra investiga dos crímenes imposibles: cuerpos quemados desde dentro, sin rastro de acelerador. Detrás hay alguien con la química, la disciplina y la teología de un creyente.',
+    hook:     '«¿Cuándo cruzas una línea sin saber cuándo?»',
+    badge:    'PRÓXIMAMENTE',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Libros de Jordi Moya Solà",
+  "description": "Catálogo completo de Jordi Moya Solà: Swingers: Magicfinger, Locked In y Combustión.",
+  "url": "https://www.jordimoyasola.com/libros",
+  "author": { "@type": "Person", "name": "Jordi Moya Solà" }
+};
+---
+
+<Base
+  title="Libros — Jordi Moya Solà · El Universo Narrativo"
+  description="Catálogo completo de Jordi Moya Solà. Swingers: Magicfinger, Locked In y Combustión. Tres novelas de thriller psicológico que construyen un universo único."
+  canonical="https://www.jordimoyasola.com/libros"
+  schema={schema}
+>
+  <Nav slot="nav" currentPath="/libros" />
+
+  <!-- HEADER -->
+  <div style="padding:140px 80px 80px;max-width:calc(var(--max-w)+160px);margin:0 auto;background:var(--carbon);border-bottom:1px solid var(--border);">
+    <nav class="breadcrumb"><a href="/">Inicio</a><span>›</span><span style="color:var(--white-dim);">Libros</span></nav>
+    <div class="rv" style="max-width:700px;">
+      <div class="s-label">La Obra</div>
+      <h1 class="s-title">El universo <em>Moya Solà</em></h1>
+      <div class="gold-bar"></div>
+      <p style="font-family:var(--sans);font-size:17px;color:var(--white-dim);line-height:1.9;max-width:560px;">
+        Tres novelas. Dos mundos conectados por una misma pregunta: <em style="color:var(--white);">¿en qué momento una persona decide que sus propias reglas valen más que las del mundo?</em>
+      </p>
+    </div>
+  </div>
+
+  <!-- LIBROS -->
+  <div style="max-width:calc(var(--max-w)+160px);margin:0 auto;">
+    {books.map((b, i) => (
+      <section style={`
+        padding:80px;
+        background:${i%2===0?'var(--black)':'var(--carbon)'};
+        border-bottom:1px solid var(--border);
+        display:grid;
+        grid-template-columns:${i%2===0?'1fr 1.4fr':'1.4fr 1fr'};
+        gap:80px;align-items:center;
+      `}>
+
+        <!-- Portada CSS -->
+        <div class={`rv${i>0?' d'+i:''}`} style={`${i%2!==0?'order:2':''};position:relative;`}>
+          <div style={`
+            aspect-ratio:2/3;max-width:280px;${i%2!==0?'margin-left:auto':''}
+            background:linear-gradient(155deg,#1c1308,#0a0a0a);
+            border:1px solid rgba(${b.color==='var(--gold)'?'212,175,55':'100,148,204'},.25);
+            display:flex;flex-direction:column;align-items:center;justify-content:center;
+            padding:32px 24px;
+            box-shadow:-16px 16px 60px rgba(0,0,0,.9);
+            position:relative;
+          `}>
+            {b.badge && (
+              <div style={`position:absolute;top:14px;right:14px;background:#CC0000;color:#fff;font-family:var(--sans);font-size:7px;font-weight:700;letter-spacing:.25em;padding:4px 10px;`}>{b.badge}</div>
+            )}
+            <div style={`width:60%;height:1px;background:${b.color};margin-bottom:20px;opacity:.7;`}></div>
+            <div style="font-family:var(--serif);font-size:18px;font-weight:900;color:var(--white);text-align:center;line-height:1.15;margin-bottom:12px;">{b.title}</div>
+            <div style={`font-family:var(--sans);font-size:9px;letter-spacing:.2em;color:${b.color};margin-bottom:20px;text-align:center;`}>{b.genre}</div>
+            <div style={`width:20px;height:20px;border:1px solid ${b.color};transform:rotate(45deg);opacity:.5;margin-bottom:20px;`}></div>
+            <div style="font-family:var(--serif);font-size:11px;font-style:italic;color:var(--gold-dim);">Jordi Moya Solà</div>
+            <div style={`width:60%;height:1px;background:${b.color};margin-top:20px;opacity:.4;`}></div>
+          </div>
+          <!-- Barra progreso -->
+          <div style={`margin-top:20px;max-width:280px;${i%2!==0?'margin-left:auto':''}background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.2);padding:18px 20px;`}>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <span style={`font-family:var(--sans);font-size:8px;letter-spacing:.3em;color:${b.color};text-transform:uppercase;`}>{b.status}</span>
+              <span style={`font-family:var(--sans);font-size:8px;color:${b.color};font-weight:700;`}>{b.pct}%</span>
+            </div>
+            <div style="height:2px;background:rgba(255,255,255,.06);">
+              <div style={`height:100%;width:${b.pct}%;background:${b.color};`}></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenido -->
+        <div class="rv d1" style={i%2!==0?'order:1':''}>
+          <div style={`font-family:var(--sans);font-size:8px;letter-spacing:.5em;color:${b.color};text-transform:uppercase;margin-bottom:16px;`}>Libro {b.num} del universo</div>
+          <h2 style="font-family:var(--serif);font-size:clamp(32px,3.5vw,52px);font-weight:900;color:var(--white);line-height:1.05;margin-bottom:8px;">{b.title}</h2>
+          {b.subtitle && <div style={`font-family:var(--sans);font-size:13px;letter-spacing:.2em;color:${b.color};margin-bottom:20px;`}>{b.subtitle}</div>}
+          <div class="gold-bar"></div>
+
+          <!-- Sinopsis -->
+          <p style="font-family:var(--sans);font-size:16px;color:var(--white-dim);line-height:1.9;margin-bottom:24px;">{b.desc}</p>
+
+          <!-- Pregunta clave -->
+          <div style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--white);border-left:2px solid var(--gold);padding:16px 24px;background:rgba(212,175,55,.04);margin-bottom:32px;">{b.hook}</div>
+
+          <!-- Meta -->
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
+            {[b.genre.split('·')[0].trim(), b.year, b.editorial, b.pages+' pág.'].map(tag => (
+              <span style="font-family:var(--sans);font-size:11px;color:var(--menu-gray);padding:5px 14px;border:1px solid var(--border);">{tag}</span>
+            ))}
+          </div>
+
+          <!-- CTA -->
+          <div style="display:flex;gap:16px;flex-wrap:wrap;">
+            <a href={b.href} class="btn-primary">Ver el libro completo</a>
+            {!b.badge && <a href={b.href+'#extracto'} class="btn-ghost">Leer extracto</a>}
+            {b.badge && <a href="/circulo-interior" class="btn-outline">Acceso anticipado</a>}
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <!-- UNIVERSO COMPARTIDO -->
+  <section style="padding:var(--section-pad);background:var(--panel);border-top:1px solid var(--border);text-align:center;">
+    <div style="max-width:780px;margin:0 auto;">
+      <div class="rv">
+        <div class="s-label" style="justify-content:center;">El hilo conductor</div>
+        <h2 class="s-title" style="text-align:center;">Un solo mundo.<br><em>Dos novelas.</em></h2>
+        <div class="gold-bar" style="margin:0 auto 40px;"></div>
+        <blockquote style="font-family:var(--serif);font-size:clamp(18px,2vw,26px);font-style:italic;color:var(--white);line-height:1.5;margin-bottom:40px;">
+          «Ambas novelas exploran la misma pregunta desde dos ángulos opuestos: ¿en qué momento una persona decide que sus propias reglas valen más que las del mundo?»
+        </blockquote>
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:.3em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:40px;">— Jordi Moya Solà</div>
+        <a href="/circulo-interior" class="btn-primary">Acceder a las conexiones ocultas</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>

@@ -1,0 +1,243 @@
+---
+/**
+ * en/index.astro — English homepage
+ * URL: jordimoyasola.com/en
+ * International SEO entry point
+ */
+import Base   from '../../layouts/Base.astro';
+import Nav    from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jordi Moya Solà",
+    "url": "https://www.jordimoyasola.com/en",
+    "sameAs": [
+      "https://www.instagram.com/jordimoyasola",
+      "https://www.goodreads.com/author/show/jordimoyasola"
+    ],
+    "jobTitle": "Author",
+    "description": "Spanish author of psychological thriller. Author of Swingers: Magicfinger, Locked In and Combustión.",
+    "birthPlace": { "@type": "Place", "name": "Granollers, Barcelona, Spain" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Jordi Moya Solà — Psychological Thriller Author",
+    "url": "https://www.jordimoyasola.com/en",
+    "inLanguage": "en",
+    "about": { "@type": "Person", "name": "Jordi Moya Solà" }
+  }
+];
+---
+
+<Base
+  title="Jordi Moya Solà — Spanish Psychological Thriller Author"
+  description="Jordi Moya Solà is a Spanish author of psychological thriller. Debut novel Swingers: Magicfinger — a spiral of desire, obsession and manipulation. Read the first chapter free."
+  ogImage="/og-image.jpg"
+  canonical="https://www.jordimoyasola.com/en"
+  schema={schema}
+>
+  <Nav slot="nav" lang="en" currentPath="/en" />
+
+  <!-- ═══ HERO ═══ -->
+  <section style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:148px 80px 100px;background:var(--carbon);border-bottom:1px solid var(--border);position:relative;overflow:hidden;">
+    <div style="position:absolute;top:50%;left:60%;transform:translate(-50%,-50%);font-family:'Playfair Display',Georgia,serif;font-size:500px;color:rgba(184,150,90,.025);line-height:1;pointer-events:none;user-select:none;white-space:nowrap;">JMS</div>
+
+    <div style="max-width:840px;position:relative;z-index:1;">
+      <div class="rv" style="font-family:'Lato',sans-serif;font-size:13px;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:44px;display:flex;align-items:center;gap:20px;font-weight:700;">
+        <span style="width:32px;height:1px;background:var(--gold);display:inline-block;"></span>
+        Psychological Thriller · Barcelona, Spain · 2026
+      </div>
+
+      <h1 class="rv" style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(52px,7vw,100px);font-weight:900;line-height:.92;color:var(--white);margin-bottom:20px;">
+        Jordi<br>Moya <em style="font-style:normal;color:var(--gold);">Solà</em>
+      </h1>
+
+      <p class="rv d1" style="font-family:'Lato',sans-serif;font-size:18px;color:var(--white-dim);max-width:540px;line-height:1.8;margin-bottom:20px;">
+        The voice that will disturb the way you read thriller.
+      </p>
+
+      <blockquote class="rv d2" style="font-family:'Playfair Display',Georgia,serif;font-size:20px;font-style:italic;color:var(--white-dim);line-height:1.7;max-width:500px;border-left:1px solid rgba(212,175,55,.42);padding-left:28px;margin-bottom:60px;">
+        «There are truths that only surface in darkness. Characters whose inner logic is disturbingly understandable.»
+      </blockquote>
+
+      <div class="rv d3" style="display:flex;gap:24px;align-items:center;flex-wrap:wrap;">
+        <a href="#chapter" style="display:inline-block;font-family:'Lato',sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--black);background:var(--gold);padding:18px 40px;text-decoration:none;border:1px solid var(--gold);transition:all .3s;" onmouseover="this.style.background='transparent';this.style.color='var(--gold)'" onmouseout="this.style.background='var(--gold)';this.style.color='var(--black)'">Read chapter one — free</a>
+        <a href="#books" style="display:inline-flex;align-items:center;gap:14px;font-family:'Lato',sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--white-dim);text-decoration:none;transition:color .3s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--white-dim)'">
+          <span style="width:28px;height:1px;background:var(--gold);display:inline-block;"></span>All books
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BOOKS ═══ -->
+  <section id="books" style="padding:var(--section-pad);background:var(--black);border-top:1px solid var(--border);">
+    <div style="max-width:var(--max-w);margin:0 auto;">
+      <div class="rv" style="margin-bottom:72px;">
+        <div style="font-family:'Lato',sans-serif;font-size:9px;letter-spacing:.45em;color:var(--gold);text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:18px;">
+          <span style="width:28px;height:1px;background:var(--gold);display:inline-block;"></span>
+          The Work
+        </div>
+        <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(36px,4.5vw,60px);font-weight:900;line-height:1;color:var(--white);">The Moya Solà <em style="font-style:normal;color:var(--gold);">Universe</em></h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+        {[
+          {
+            href: '/en#chapter',
+            num: 'I', status: 'Coming Soon', pct: '95%',
+            title: 'Swingers:\nMagicfinger',
+            badge: 'COMING 2026',
+            desc: 'A marriage. An affair. A clandestine world where nothing is what it seems.',
+            color: 'var(--gold)',
+          },
+          {
+            href: '/libros/locked-in',
+            num: 'II', status: 'In production', pct: '81%',
+            title: 'Locked In',
+            badge: null,
+            desc: 'Damián can hear everything. He can think with perfect clarity. He cannot tell the world he is still there.',
+            color: '#6494cc',
+          },
+          {
+            href: '/libros/combustion',
+            num: 'III', status: 'Forthcoming', pct: '',
+            title: 'Combustión',
+            badge: 'FORTHCOMING',
+            desc: 'Barcelona, 2010. Two impossible murders. A detective. A believer who confused damage with mercy.',
+            color: '#E8A020',
+          },
+        ].map((b, i) => (
+          <a href={b.href} class={`rv${i>0?' d'+i:''}`} style="display:block;background:var(--charcoal);border:1px solid var(--border);padding:44px 36px;text-decoration:none;color:inherit;transition:border-color .4s;position:relative;" onmouseover="this.style.borderColor='rgba(212,175,55,.5)'" onmouseout="this.style.borderColor='rgba(212,175,55,.18)'">
+            {b.badge && <div style="position:absolute;top:16px;right:16px;background:#CC0000;color:#fff;font-family:'Lato',sans-serif;font-size:7px;font-weight:700;letter-spacing:.25em;padding:4px 10px;">{b.badge}</div>}
+            <div style={`font-family:'Lato',sans-serif;font-size:8px;letter-spacing:.5em;color:${b.color};text-transform:uppercase;margin-bottom:24px;`}>{b.num} · {b.status}</div>
+            <div style="font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:900;color:var(--white);line-height:1.2;margin-bottom:16px;white-space:pre-line;">{b.title}</div>
+            <p style="font-family:'Lato',sans-serif;font-size:14px;color:var(--white-dim);line-height:1.7;margin-bottom:24px;">{b.desc}</p>
+            <div style={`font-family:'Lato',sans-serif;font-size:11px;letter-spacing:.2em;color:${b.color};`}>Read more →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about" style="padding:var(--section-pad);background:var(--carbon);border-top:1px solid var(--border);">
+    <div style="max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center;">
+      <div class="rv">
+        <div style="font-family:'Lato',sans-serif;font-size:9px;letter-spacing:.45em;color:var(--gold);text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:18px;">
+          <span style="width:28px;height:1px;background:var(--gold);display:inline-block;"></span>About the Author
+        </div>
+        <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(32px,4vw,54px);font-weight:900;line-height:1;color:var(--white);margin-bottom:28px;">The voice<br><em style="font-style:normal;color:var(--gold);">behind</em></h2>
+        <div style="width:40px;height:1px;background:var(--gold);margin:0 0 36px;"></div>
+        <p style="font-family:'Lato',sans-serif;font-size:16px;color:var(--white-dim);line-height:1.9;margin-bottom:20px;">
+          Jordi Moya Solà was born in Granollers, Barcelona, in 1978. He began <em style="color:var(--white);">Swingers: Magicfinger</em> in 2012, at a moment when he needed to turn the complexity of his own life into literature.
+        </p>
+        <p style="font-family:'Lato',sans-serif;font-size:16px;color:var(--white-dim);line-height:1.9;margin-bottom:36px;">
+          Thirteen years later, his debut novel is finally ready. A psychological thriller about desire, identity and the decisions we make in the dark — the ones we cannot explain even to ourselves.
+        </p>
+        <a href="/sobre" style="display:inline-flex;align-items:center;gap:14px;font-family:'Lato',sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--white-dim);text-decoration:none;transition:color .3s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--white-dim)'">
+          <span style="width:28px;height:1px;background:var(--gold);display:inline-block;"></span>Full biography (ES)
+        </a>
+      </div>
+      <div class="rv d1">
+        <blockquote style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(20px,2.4vw,32px);font-style:italic;color:var(--white);line-height:1.4;padding:40px;border:1px solid var(--border-strong);background:rgba(212,175,55,.03);position:relative;">
+          <span style="position:absolute;top:-20px;left:40px;font-family:'Playfair Display',serif;font-size:80px;color:rgba(212,175,55,.15);line-height:1;">"</span>
+          «Darkness is not the absence of light. It is the space where people discover who they truly are when no one is watching. That is what I write.»
+        </blockquote>
+        <div style="font-family:'Lato',sans-serif;font-size:9px;letter-spacing:.4em;color:var(--gold-dim);text-transform:uppercase;margin-top:16px;padding-left:40px;">— Jordi Moya Solà</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ INNER CIRCLE ═══ -->
+  <section id="circle" style="padding:var(--section-pad);background:var(--panel);border-top:1px solid var(--border);text-align:center;" id="chapter">
+    <div style="max-width:680px;margin:0 auto;">
+      <div class="rv">
+        <div style="font-family:'Lato',sans-serif;font-size:9px;letter-spacing:.45em;color:var(--gold);text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:18px;">
+          <span style="width:28px;height:1px;background:var(--gold);display:inline-block;"></span>
+          Inner Circle
+          <span style="width:28px;height:1px;background:var(--gold);display:inline-block;"></span>
+        </div>
+        <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(36px,4.5vw,64px);font-weight:900;line-height:1;color:var(--white);margin-bottom:24px;">Read <em style="font-style:normal;color:var(--gold);">Chapter One</em><br>for free</h2>
+        <p style="font-family:'Lato',sans-serif;font-size:16px;color:var(--white-dim);line-height:1.9;margin-bottom:48px;">
+          Join the Inner Circle and receive the complete first chapter of <em style="color:var(--white);">Swingers: Magicfinger</em> — plus the psychological character file of the protagonist, reserved for members.
+        </p>
+
+        <div style="background:var(--charcoal);border:1px solid var(--border-strong);padding:44px;text-align:left;">
+          <form id="form-en" onsubmit="submitEnForm(event)">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0;">
+              <div class="form-field"><input type="text" id="en-name" placeholder="Your name *" required></div>
+              <div class="form-field"><input type="email" id="en-email" placeholder="Email address *" required></div>
+            </div>
+            <div class="form-field" style="display:flex;align-items:flex-start;gap:12px;padding:4px 0 14px;">
+              <input type="checkbox" id="gdpr-en" required style="width:auto;margin-top:3px;accent-color:#D4AF37;">
+              <label for="gdpr-en" style="font-family:'Lato',sans-serif;font-size:12px;color:var(--menu-gray);line-height:1.6;cursor:pointer;">
+                I agree to receive communications from the Inner Circle. <a href="/privacidad" style="color:var(--gold);">Privacy Policy</a> (GDPR). Unsubscribe anytime.
+              </label>
+            </div>
+            <button type="submit" class="form-submit" id="en-submit">Join the Inner Circle — it's free</button>
+            <div id="en-msg" style="display:none;margin-top:14px;font-family:'Lato',sans-serif;font-size:13px;text-align:center;"></div>
+          </form>
+          <div style="margin-top:20px;font-family:'Lato',sans-serif;font-size:9px;letter-spacing:.25em;color:var(--gold-dim);text-align:center;text-transform:uppercase;">🔒 No spam · Unsubscribe anytime · GDPR compliant</div>
+        </div>
+
+        <p style="font-family:'Lato',sans-serif;font-size:13px;color:var(--menu-gray);margin-top:24px;">
+          The author writes primarily in Spanish. The Inner Circle is in Spanish.<br>
+          <a href="/" style="color:var(--gold);">Visit the full Spanish site →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if (!nav) return;
+    if (window.scrollY > 80) {
+      nav.style.background = 'rgba(8,8,8,.96)';
+      nav.style.borderBottom = '1px solid rgba(212,175,55,.18)';
+      nav.style.backdropFilter = 'blur(16px)';
+      nav.style.padding = '16px 64px';
+    } else {
+      nav.style.background = '';
+      nav.style.borderBottom = '';
+      nav.style.backdropFilter = '';
+      nav.style.padding = '26px 64px';
+    }
+  }, { passive: true });
+
+  // Form
+  const SUPABASE_URL = 'https://yvbysknlztkcxrcnsczj.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl2Ynlza25senRrY3hyY25zY3pqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3MzE2MzksImV4cCI6MjA4ODMwNzYzOX0._hqy4tFj-zkfqJapGfK9p_BH4EQvIMeBzYGtYlwhSVE';
+
+  async function submitEnForm(e) {
+    e.preventDefault();
+    const btn = document.getElementById('en-submit');
+    const msg = document.getElementById('en-msg');
+    btn.textContent = 'Processing...'; btn.disabled = true;
+    try {
+      if (SUPABASE_URL && SUPABASE_KEY) {
+        await fetch(SUPABASE_URL + '/rest/v1/circle_members', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Prefer': 'return=minimal' },
+          body: JSON.stringify({ name: document.getElementById('en-name').value, email: document.getElementById('en-email').value, source: 'web-en', gdpr_accepted: true, active: true, created_at: new Date().toISOString() })
+        });
+      }
+      msg.style.display = 'block'; msg.style.color = 'var(--gold)';
+      msg.textContent = '✓ Welcome to the Inner Circle. Check your inbox.';
+      btn.textContent = '✓ You\'re in';
+    } catch(err) {
+      msg.style.display = 'block'; msg.style.color = '#ff6b6b';
+      msg.textContent = 'Error. Write to hola@jordimoyasola.com';
+      btn.textContent = 'Try again'; btn.disabled = false;
+    }
+  }
+  window.submitEnForm = submitEnForm;
+</script>

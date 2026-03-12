@@ -1,0 +1,264 @@
+/*
+ * ═══════════════════════════════════════════════════════════════
+ * SISTEMA DE DISEÑO — Jordi Moya Solà
+ * Archivo central. Importar en Base.astro únicamente.
+ * ═══════════════════════════════════════════════════════════════
+ *
+ * TIPOGRAFÍA:
+ *   Headings   → Playfair Display  (serif editorial)
+ *   Body/UI    → Lato              (sans-serif limpio)
+ *
+ * PALETA:
+ *   --gold     #D4AF37   Acentos, CTA, highlights
+ *   --black    #1a1a1a   Fondo principal
+ *   --carbon   #000000   Fondo oscuro máximo
+ *   --charcoal #2a2a2a   Fondos de tarjetas y paneles
+ */
+
+/* ─── VARIABLES ─────────────────────────────────────────────── */
+:root {
+  --black:          #1a1a1a;
+  --carbon:         #000000;
+  --charcoal:       #2a2a2a;
+  --panel:          #222222;
+  --gold:           #D4AF37;
+  --gold-light:     #E8D4A0;
+  --gold-dim:       #9a7d20;
+  --gold-glow:      rgba(212,175,55,0.10);
+  --white:          #FFFFFF;
+  --white-dim:      rgba(255,255,255,0.65);
+  --white-faint:    rgba(255,255,255,0.08);
+  --border:         rgba(212,175,55,0.18);
+  --border-strong:  rgba(212,175,55,0.42);
+  --menu-gray:      #808080;
+
+  --serif:   'Playfair Display', Georgia, serif;
+  --sans:    'Lato', system-ui, sans-serif;
+
+  --max-w:   1280px;
+  --section-pad: clamp(64px, 10vw, 140px) clamp(24px, 6vw, 80px);
+}
+
+/* ─── RESET ──────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+img, video { max-width: 100%; display: block; }
+a { color: inherit; }
+
+/* ─── GRANO DE PELÍCULA ──────────────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9000;
+}
+
+/* ─── BARRA DE PROGRESO ──────────────────────────────────────── */
+#prog {
+  position: fixed; top: 0; left: 0; height: 2px;
+  background: linear-gradient(to right, var(--gold-dim), var(--gold));
+  z-index: 9999; width: 0; transition: width .1s;
+}
+
+/* ─── CURSOR PERSONALIZADO (solo desktop/mouse) ──────────────── */
+.js-custom-cursor * { cursor: none !important; }
+#cur {
+  position: fixed; width: 8px; height: 8px;
+  background: var(--gold); border-radius: 50%;
+  pointer-events: none; z-index: 99999;
+  transform: translate(-50%,-50%);
+  transition: transform .15s, opacity .3s;
+  mix-blend-mode: difference; display: none;
+}
+.js-custom-cursor #cur { display: block; }
+#cur-r {
+  position: fixed; width: 34px; height: 34px;
+  border: 1px solid rgba(184,150,90,.45); border-radius: 50%;
+  pointer-events: none; z-index: 99998;
+  transform: translate(-50%,-50%);
+  transition: width .3s, height .3s; display: none;
+}
+.js-custom-cursor #cur-r { display: block; }
+
+/* ─── TIPOGRAFÍA — ELEMENTOS REUTILIZABLES ──────────────────── */
+.s-label {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: .45em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+.s-label::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.s-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  line-height: 1.0;
+  color: var(--white);
+  margin-bottom: 28px;
+}
+.s-title em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.gold-bar {
+  width: 40px; height: 1px;
+  background: var(--gold);
+  margin: 0 0 40px;
+}
+
+/* ─── BOTONES ────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--black);
+  background: var(--gold);
+  padding: 16px 36px;
+  text-decoration: none;
+  border: 1px solid var(--gold);
+  transition: all .3s;
+}
+.btn-primary:hover { background: transparent; color: var(--gold); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--white-dim);
+  text-decoration: none;
+  transition: color .3s;
+}
+.btn-ghost::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--gold);
+  transition: width .3s;
+}
+.btn-ghost:hover { color: var(--white); }
+.btn-ghost:hover::before { width: 44px; }
+
+.btn-outline {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--gold);
+  background: transparent;
+  padding: 14px 28px;
+  text-decoration: none;
+  border: 1px solid var(--border-strong);
+  transition: all .3s;
+}
+.btn-outline:hover { background: var(--gold-glow); border-color: var(--gold); }
+
+/* ─── FORMULARIOS ────────────────────────────────────────────── */
+.form-field { margin-bottom: 10px; }
+.form-field input,
+.form-field textarea,
+.form-field select {
+  width: 100%;
+  background: rgba(240,234,216,.04);
+  border: 1px solid var(--border);
+  padding: 15px 18px;
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 16px;
+  outline: none;
+  transition: border-color .3s;
+  -webkit-appearance: none;
+}
+.form-field input::placeholder,
+.form-field textarea::placeholder { color: var(--white-dim); font-style: italic; font-size: 15px; }
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus { border-color: var(--gold); background: rgba(184,150,90,.04); }
+
+.form-submit {
+  width: 100%; padding: 18px;
+  background: var(--gold); border: none;
+  color: var(--black);
+  font-family: var(--sans);
+  font-size: 9.5px;
+  letter-spacing: .4em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .3s;
+}
+.form-submit:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 30px rgba(184,150,90,.22); }
+
+/* ─── ANIMACIONES DE REVEAL ──────────────────────────────────── */
+@keyframes fu { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fi { from{opacity:0} to{opacity:1} }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.6)} }
+@keyframes twblink { 0%,100%{opacity:1} 50%{opacity:0} }
+@keyframes rs { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+
+.rv {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .85s ease, transform .85s ease;
+}
+.rv.vis { opacity: 1; transform: translateY(0); }
+.rv.d1 { transition-delay: .12s; }
+.rv.d2 { transition-delay: .25s; }
+.rv.d3 { transition-delay: .38s; }
+.rv.d4 { transition-delay: .50s; }
+
+/* ─── BREADCRUMB ─────────────────────────────────────────────── */
+.breadcrumb {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: var(--menu-gray);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 48px;
+}
+.breadcrumb a { color: var(--gold-dim); text-decoration: none; transition: color .3s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb span { color: var(--border-strong); }
+
+/* ─── SCROLL OFFSET (nav fija) ───────────────────────────────── */
+section[id], div[id] { scroll-margin-top: 80px; }
+
+/* ─── MEDIA QUERIES ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --section-pad: 80px 24px;
+  }
+}

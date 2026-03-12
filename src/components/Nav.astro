@@ -1,0 +1,480 @@
+---
+/**
+ * Nav.astro — Navegación principal con lang switcher i18n
+ * Props:
+ *   currentPath  — ruta activa para resaltar link
+ *   lang         — idioma actual ('es' | 'ca' | 'en')
+ */
+import { localizeURL } from '../lib/i18n';
+import type { Lang } from '../lib/i18n';
+
+export interface Props {
+  currentPath?: string;
+  lang?:        Lang;
+}
+
+const { currentPath = '/', lang = 'es' } = Astro.props;
+
+// Links con etiquetas según idioma
+const labelsMap: Record<Lang, string[]> = {
+  es: ['Libros', 'Sobre mí', 'Reflexiones', 'Círculo Interior', 'Prensa', 'Contacto'],
+  ca: ['Llibres', 'Sobre mi', 'Reflexions', 'Cercle Interior', 'Premsa', 'Contacte'],
+  en: ['Books', 'About', 'Reflections', 'Inner Circle', 'Press', 'Contact'],
+};
+
+const hrefs = [
+  '/libros',
+  '/sobre',
+  '/reflexiones',
+  '/circulo-interior',
+  '/prensa',
+  '/contacto',
+];
+
+const ctaLabel: Record<Lang, string> = {
+  es: 'Leer primer capítulo',
+  ca: 'Llegir primer capítol',
+  en: 'Read first chapter',
+};
+
+const links = hrefs.map((href, i) => ({
+  href: localizeURL(href, lang),
+  label: labelsMap[lang][i],
+  raw: href,
+}));
+
+// URLs del switcher para la página actual
+// Normalizar currentPath eliminando prefijo de idioma
+const cleanPath = currentPath.replace(/^\/(ca|en)/, '') || '/';
+const langURLs: Record<Lang, string> = {
+  es: cleanPath,
+  ca: localizeURL(cleanPath, 'ca'),
+  en: localizeURL(cleanPath, 'en'),
+};
+---
+
+<style>
+  /* ─── Nav base ─────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 26px 64px;
+    transition: background .5s ease, border-color .5s ease, padding .4s ease;
+  }
+  nav.scrolled {
+    background: rgba(8,8,8,.96);
+    border-bottom: 1px solid rgba(212,175,55,.18);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 14px 64px;
+  }
+
+  /* ─── Logo ─────────────────────────────────────────── */
+  .n-logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 18px;
+    letter-spacing: .02em;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ─── Links desktop ─────────────────────────────────── */
+  .n-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .n-links a {
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    letter-spacing: .06em;
+    color: var(--menu-gray);
+    text-decoration: none;
+    transition: color .3s;
+    position: relative;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+  .n-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width .3s;
+  }
+  .n-links a:hover,
+  .n-links a.active { color: var(--white); }
+  .n-links a:hover::after,
+  .n-links a.active::after { width: 100%; }
+
+  /* ─── Grupo derecho ─────────────────────────────────── */
+  .n-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+  }
+
+  /* ─── Lang switcher ─────────────────────────────────── */
+  .lang-sw {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid rgba(212,175,55,.2);
+  }
+  .lang-btn {
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--menu-gray);
+    text-decoration: none;
+    padding: 7px 11px;
+    transition: color .25s, background .25s;
+    white-space: nowrap;
+    line-height: 1;
+  }
+  .lang-btn:hover {
+    color: var(--gold);
+  }
+  .lang-btn.lang-active {
+    color: var(--gold);
+    background: rgba(212,175,55,.08);
+  }
+  .lang-sep {
+    width: 1px;
+    height: 12px;
+    background: rgba(212,175,55,.2);
+    flex-shrink: 0;
+  }
+
+  /* ─── CTA ───────────────────────────────────────────── */
+  .n-cta {
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    letter-spacing: .12em;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid rgba(212,175,55,.42);
+    padding: 10px 22px;
+    transition: all .3s;
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .n-cta:hover { background: var(--gold); color: var(--black); }
+
+  /* ─── Hamburguesa ───────────────────────────────────── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 4px;
+    z-index: 1100;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 1.5px;
+    background: var(--gold);
+    transition: all .35s ease;
+    transform-origin: center;
+  }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+  /* ─── Menú móvil ────────────────────────────────────── */
+  .mobile-menu {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.98);
+    z-index: 1050;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    /* Grain overlay en móvil también */
+    background-image:
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"),
+      none;
+    background-color: rgba(0,0,0,.98);
+  }
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu .mm-link {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(22px, 5vw, 32px);
+    color: var(--white-dim);
+    text-decoration: none;
+    transition: color .3s;
+    font-weight: 700;
+    letter-spacing: .02em;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: color .3s, opacity .4s ease, transform .4s ease;
+  }
+  .mobile-menu.open .mm-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Delays escalonados */
+  .mobile-menu.open .mm-link:nth-child(1) { transition-delay: .05s; }
+  .mobile-menu.open .mm-link:nth-child(2) { transition-delay: .10s; }
+  .mobile-menu.open .mm-link:nth-child(3) { transition-delay: .15s; }
+  .mobile-menu.open .mm-link:nth-child(4) { transition-delay: .20s; }
+  .mobile-menu.open .mm-link:nth-child(5) { transition-delay: .25s; }
+  .mobile-menu.open .mm-link:nth-child(6) { transition-delay: .30s; }
+
+  .mobile-menu .mm-link:hover { color: var(--gold); }
+
+  .mobile-menu .mm-divider {
+    width: 40px; height: 1px;
+    background: rgba(212,175,55,.3);
+    margin: 4px 0;
+  }
+
+  .mobile-menu .mm-cta {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid rgba(212,175,55,.42);
+    padding: 14px 40px;
+    margin-top: 8px;
+    transition: all .3s;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all .3s, opacity .4s ease .35s, transform .4s ease .35s;
+  }
+  .mobile-menu.open .mm-cta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .mobile-menu .mm-cta:hover { background: var(--gold); color: var(--black); }
+
+  /* Lang switcher en móvil */
+  .mobile-menu .mm-lang {
+    display: flex;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .4s ease .4s, transform .4s ease .4s;
+  }
+  .mobile-menu.open .mm-lang { opacity: 1; transform: translateY(0); }
+  .mobile-menu .mm-lang a {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    color: var(--menu-gray);
+    text-decoration: none;
+    transition: color .3s;
+    text-transform: uppercase;
+  }
+  .mobile-menu .mm-lang a.lang-active { color: var(--gold); }
+  .mobile-menu .mm-lang a:hover { color: var(--gold); }
+
+  /* ─── Responsive ────────────────────────────────────── */
+  @media (max-width: 1100px) {
+    nav { padding: 20px 40px; }
+    nav.scrolled { padding: 14px 40px; }
+    .n-links { gap: 22px; }
+    .n-links a { font-size: 12px; }
+  }
+  @media (max-width: 900px) {
+    .n-links  { display: none; }
+    .n-cta    { display: none; }
+    .lang-sw  { display: none; }
+    .hamburger { display: flex; }
+    nav { padding: 20px 32px; }
+    nav.scrolled { padding: 14px 32px; }
+  }
+</style>
+
+<!-- ─── NAV PRINCIPAL ─────────────────────────────────────── -->
+<nav id="main-nav" role="navigation" aria-label="Navegación principal">
+
+  <!-- Logo -->
+  <a href={localizeURL('/', lang)} class="n-logo" aria-label="Jordi Moya Solà — Inicio">
+    Jordi Moya Solà
+  </a>
+
+  <!-- Links desktop -->
+  <ul class="n-links" role="list">
+    {links.map(l => (
+      <li>
+        <a
+          href={l.href}
+          class={currentPath.startsWith(l.raw) ? 'active' : ''}
+          aria-current={currentPath.startsWith(l.raw) ? 'page' : undefined}
+        >
+          {l.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <!-- Grupo derecho: lang switcher + CTA + hamburguesa -->
+  <div class="n-right">
+
+    <!-- Lang switcher desktop -->
+    <div class="lang-sw" role="navigation" aria-label="Selección de idioma">
+      <a
+        href={langURLs.es}
+        class={`lang-btn${lang === 'es' ? ' lang-active' : ''}`}
+        aria-label="Español"
+        hreflang="es"
+        lang="es"
+      >ES</a>
+      <span class="lang-sep" aria-hidden="true"></span>
+      <a
+        href={langURLs.ca}
+        class={`lang-btn${lang === 'ca' ? ' lang-active' : ''}`}
+        aria-label="Català"
+        hreflang="ca"
+        lang="ca"
+      >CA</a>
+      <span class="lang-sep" aria-hidden="true"></span>
+      <a
+        href={langURLs.en}
+        class={`lang-btn${lang === 'en' ? ' lang-active' : ''}`}
+        aria-label="English"
+        hreflang="en"
+        lang="en"
+      >EN</a>
+    </div>
+
+    <!-- CTA desktop -->
+    <a
+      href={localizeURL('/circulo-interior', lang)}
+      class="n-cta"
+      aria-label={ctaLabel[lang]}
+    >
+      {ctaLabel[lang]}
+    </a>
+
+    <!-- Hamburguesa mobile -->
+    <button
+      class="hamburger"
+      id="hamburger"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</nav>
+
+<!-- ─── MENÚ MÓVIL ───────────────────────────────────────── -->
+<div
+  class="mobile-menu"
+  id="mobile-menu"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menú de navegación"
+>
+  {links.map(l => (
+    <a href={l.href} class="mm-link">{l.label}</a>
+  ))}
+
+  <div class="mm-divider" aria-hidden="true"></div>
+
+  <a href={localizeURL('/circulo-interior', lang)} class="mm-cta">
+    {ctaLabel[lang]}
+  </a>
+
+  <!-- Lang switcher móvil -->
+  <div class="mm-lang" role="navigation" aria-label="Idioma">
+    <a
+      href={langURLs.es}
+      class={lang === 'es' ? 'lang-active' : ''}
+      hreflang="es"
+    >ES</a>
+    <a
+      href={langURLs.ca}
+      class={lang === 'ca' ? 'lang-active' : ''}
+      hreflang="ca"
+    >CA</a>
+    <a
+      href={langURLs.en}
+      class={lang === 'en' ? 'lang-active' : ''}
+      hreflang="en"
+    >EN</a>
+  </div>
+</div>
+
+<!-- ─── JS ───────────────────────────────────────────────── -->
+<script>
+  // Nav scroll-aware
+  const nav = document.getElementById('main-nav');
+  const onScroll = () => nav?.classList.toggle('scrolled', window.scrollY > 60);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // Estado inicial
+
+  // Hamburguesa
+  const btn  = document.getElementById('hamburger') as HTMLButtonElement;
+  const menu = document.getElementById('mobile-menu') as HTMLElement;
+
+  function openMenu() {
+    menu.classList.add('open');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  btn?.addEventListener('click', () => {
+    menu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  // Cerrar al pulsar un link del menú móvil
+  menu?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeMenu);
+  });
+
+  // Cerrar con ESC
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
+  });
+
+  // Cerrar pulsando fuera (swipe/tap fuera del panel)
+  menu?.addEventListener('click', e => {
+    if (e.target === menu) closeMenu();
+  });
+</script>
+
+<script>
+  // Persistir preferencia de idioma al hacer clic en el switcher
+  // La cookie jms_lang es leída por el middleware para la redirección automática
+  document.querySelectorAll('.lang-btn, .mm-lang a').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const href = (btn as HTMLAnchorElement).getAttribute('hreflang');
+      if (href) {
+        // Guardar en cookie 1 año
+        const expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+        document.cookie = `jms_lang=${href};expires=${expires};path=/;SameSite=Lax`;
+      }
+    });
+  });
+</script>

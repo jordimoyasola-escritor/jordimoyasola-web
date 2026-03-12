@@ -1,0 +1,138 @@
+---
+/**
+ * privacidad.astro — Política de Privacidad
+ * URL: jordimoyasola.com/privacidad
+ * Requerida legalmente (RGPD) — no cambiar estructura, sí personalizar datos
+ */
+import Base   from '../layouts/Base.astro';
+import Nav    from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const lastUpdate = 'Marzo 2026';
+---
+
+<Base
+  title="Política de Privacidad — Jordi Moya Solà"
+  description="Política de privacidad del sitio web jordimoyasola.com. Tratamiento de datos personales conforme al RGPD."
+  canonical="https://www.jordimoyasola.com/privacidad"
+>
+  <Nav slot="nav" currentPath="/privacidad" />
+
+  <div style="max-width:860px;margin:0 auto;padding:140px 80px 100px;">
+    <nav class="breadcrumb">
+      <a href="/">Inicio</a><span>›</span>
+      <span style="color:var(--white-dim);">Política de Privacidad</span>
+    </nav>
+
+    <h1 class="s-title" style="font-size:clamp(32px,4vw,52px);margin-bottom:12px;">Política de <em>Privacidad</em></h1>
+    <p style="font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:var(--menu-gray);margin-bottom:48px;text-transform:uppercase;">Última actualización: {lastUpdate}</p>
+    <div class="gold-bar"></div>
+
+    <div style="font-family:var(--sans);font-size:16px;color:var(--white-dim);line-height:1.9;">
+
+      <section style="margin-bottom:48px;">
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">1. Responsable del tratamiento</h2>
+        <p>El responsable del tratamiento de los datos personales recogidos a través de este sitio web es:</p>
+        <div style="margin:20px 0;padding:20px 24px;background:var(--charcoal);border:1px solid var(--border);font-size:15px;">
+          <strong style="color:var(--white);">Titular:</strong> Jordi Moya Solà<br>
+          <strong style="color:var(--white);">Domicilio:</strong> L'Ametlla del Vallès, Barcelona, España<br>
+          <strong style="color:var(--white);">Email de contacto:</strong> <a href="mailto:privacidad@jordimoyasola.com" style="color:var(--gold);">privacidad@jordimoyasola.com</a><br>
+          <strong style="color:var(--white);">Web:</strong> www.jordimoyasola.com
+        </div>
+      </section>
+
+      <section style="margin-bottom:48px;">
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">2. Datos que recogemos y para qué</h2>
+        <div style="display:flex;flex-direction:column;gap:2px;">
+          {[
+            {
+              tratamiento: 'Círculo Interior (newsletter)',
+              datos: 'Nombre y correo electrónico',
+              base: 'Consentimiento del interesado (art. 6.1.a RGPD)',
+              plazo: 'Hasta que se dé de baja o solicite supresión',
+            },
+            {
+              tratamiento: 'Descarga del capítulo 1',
+              datos: 'Nombre y correo electrónico',
+              base: 'Consentimiento del interesado (art. 6.1.a RGPD)',
+              plazo: 'Hasta que se dé de baja o solicite supresión',
+            },
+            {
+              tratamiento: 'Formulario de contacto',
+              datos: 'Nombre, correo electrónico y contenido del mensaje',
+              base: 'Interés legítimo en atender consultas (art. 6.1.f RGPD)',
+              plazo: '12 meses desde el último contacto',
+            },
+            {
+              tratamiento: 'Cookies y analítica',
+              datos: 'Datos de navegación anonimizados',
+              base: 'Consentimiento (cookies no esenciales)',
+              plazo: 'Ver política de cookies',
+            },
+          ].map(row => (
+            <div style="padding:20px 24px;background:var(--charcoal);border:1px solid var(--border);">
+              <div style="font-family:var(--sans);font-size:9px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;">{row.tratamiento}</div>
+              <div style="font-size:14px;line-height:1.7;">
+                <strong style="color:var(--white);">Datos:</strong> {row.datos}<br>
+                <strong style="color:var(--white);">Base legal:</strong> {row.base}<br>
+                <strong style="color:var(--white);">Plazo:</strong> {row.plazo}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style="margin-bottom:48px;">
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">3. Cesión de datos a terceros</h2>
+        <p style="margin-bottom:16px;">No cedemos tus datos a terceros con fines comerciales. Los datos pueden ser tratados por proveedores de servicios necesarios para el funcionamiento del sitio:</p>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
+          {[
+            { proveedor: 'Supabase (Supabase Inc.)', uso: 'Base de datos de suscriptores y formularios', pais: 'USA — con garantías adecuadas (SCCs)' },
+            { proveedor: 'Netlify / Vercel', uso: 'Hosting y distribución del sitio web', pais: 'USA — con garantías adecuadas' },
+            { proveedor: 'Google Fonts', uso: 'Carga de tipografías (puede enviar IP a Google)', pais: 'USA — Privacy Shield' },
+          ].map(p => (
+            <li style="padding:14px 20px;background:var(--charcoal);border:1px solid var(--border);font-size:15px;">
+              <strong style="color:var(--white);">{p.proveedor}</strong><br>
+              <span style="color:var(--white-dim);">{p.uso}</span><br>
+              <span style="font-size:13px;color:var(--menu-gray);">📍 {p.pais}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section style="margin-bottom:48px;">
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">4. Tus derechos (RGPD)</h2>
+        <p style="margin-bottom:16px;">Puedes ejercer en cualquier momento los siguientes derechos escribiendo a <a href="mailto:privacidad@jordimoyasola.com" style="color:var(--gold);">privacidad@jordimoyasola.com</a>:</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+          {[
+            { d: 'Acceso', desc: 'Saber qué datos tenemos sobre ti' },
+            { d: 'Rectificación', desc: 'Corregir datos inexactos' },
+            { d: 'Supresión', desc: 'Solicitar la eliminación de tus datos' },
+            { d: 'Oposición', desc: 'Oponerte a un tratamiento concreto' },
+            { d: 'Portabilidad', desc: 'Recibir tus datos en formato estructurado' },
+            { d: 'Limitación', desc: 'Limitar el tratamiento en determinados casos' },
+          ].map(r => (
+            <div style="padding:16px 20px;background:var(--charcoal);border:1px solid var(--border);">
+              <div style="font-family:var(--sans);font-size:9px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:4px;">{r.d}</div>
+              <div style="font-size:14px;color:var(--white-dim);">{r.desc}</div>
+            </div>
+          ))}
+        </div>
+        <p style="margin-top:20px;font-size:15px;">También tienes derecho a presentar una reclamación ante la <a href="https://www.aepd.es" target="_blank" rel="noopener" style="color:var(--gold);">Agencia Española de Protección de Datos (AEPD)</a>.</p>
+      </section>
+
+      <section style="margin-bottom:48px;">
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">5. Seguridad</h2>
+        <p>Aplicamos medidas técnicas y organizativas apropiadas para proteger tus datos frente a accesos no autorizados, pérdida o destrucción, incluyendo cifrado en tránsito (HTTPS/TLS) y controles de acceso a la base de datos.</p>
+      </section>
+
+      <section>
+        <h2 style="font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">6. Cambios en esta política</h2>
+        <p>Podemos actualizar esta política. Te notificaremos los cambios significativos por email si eres suscriptor del Círculo Interior. La fecha de última actualización siempre estará visible en la cabecera de este documento.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</Base>

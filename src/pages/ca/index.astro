@@ -1,0 +1,135 @@
+---
+/**
+ * ca/index.astro — Pàgina principal en català
+ * URL: jordimoyasola.com/ca
+ */
+import Base   from '../../layouts/Base.astro';
+import Nav    from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jordi Moya Solà",
+    "url": "https://www.jordimoyasola.com/ca",
+    "sameAs": [
+      "https://www.instagram.com/jordimoyasola",
+      "https://www.goodreads.com/author/show/jordimoyasola"
+    ],
+    "jobTitle": "Escriptor",
+    "description": "Escriptor de thriller psicològic. Autor de Swingers: Magicfinger, Locked In i Combustió.",
+    "birthPlace": { "@type": "Place", "name": "Granollers, Barcelona, Catalunya" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Jordi Moya Solà — Escriptor de Thriller Psicològic",
+    "url": "https://www.jordimoyasola.com/ca",
+    "inLanguage": "ca",
+    "about": { "@type": "Person", "name": "Jordi Moya Solà" }
+  }
+];
+---
+
+<Base
+  title="Jordi Moya Solà — Escriptor de Thriller Psicològic"
+  description="Jordi Moya Solà — Escriptor de thriller psicològic. Autor de Swingers: Magicfinger, Locked In i Combustió. Llegeix el primer capítol gratis."
+  ogImage="/og-image.jpg"
+  canonical="https://www.jordimoyasola.com/ca"
+  schema={schema}
+  lang="ca"
+>
+  <Nav slot="nav" lang="ca" currentPath="/ca" />
+
+  <!-- ═══ HERO ═══ -->
+  <section style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:148px 80px 100px;background:var(--carbon);border-bottom:1px solid var(--border);position:relative;overflow:hidden;">
+    <div style="position:absolute;top:50%;left:60%;transform:translate(-50%,-50%);font-family:'Playfair Display',Georgia,serif;font-size:500px;color:rgba(184,150,90,.025);line-height:1;pointer-events:none;user-select:none;white-space:nowrap;">JMS</div>
+
+    <div style="max-width:840px;position:relative;z-index:1;">
+      <div class="rv" style="font-family:'Lato',sans-serif;font-size:13px;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:44px;display:flex;align-items:center;gap:20px;font-weight:700;">
+        <span style="width:32px;height:1px;background:var(--gold);display:inline-block;"></span>
+        Thriller Psicològic · Barcelona, Catalunya · 2026
+      </div>
+
+      <h1 class="rv" style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(52px,7vw,100px);font-weight:900;line-height:.92;color:var(--white);margin-bottom:20px;">
+        Jordi<br>Moya <em style="font-style:normal;color:var(--gold);">Solà</em>
+      </h1>
+
+      <p class="rv d1" style="font-family:'Lato',sans-serif;font-size:18px;color:var(--white-dim);max-width:540px;line-height:1.8;margin-bottom:20px;">
+        La veu que pertorbarà la teva manera de llegir thriller.
+      </p>
+
+      <p class="rv d2" style="font-family:'Playfair Display',Georgia,serif;font-size:20px;font-style:italic;color:rgba(255,255,255,.45);max-width:520px;line-height:1.65;margin-bottom:52px;border-left:2px solid rgba(212,175,55,.4);padding-left:28px;">
+        «Hi ha veritats que només emergeixen en la foscor. Personatges la lògica interna dels quals et resulta pertorbadorament comprensible.»
+      </p>
+
+      <div class="rv d3" style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;">
+        <a href="/ca/libros/swingers-magicfinger" class="btn-primary">
+          Llegir el primer capítol gratis
+        </a>
+        <a href="/" style="font-family:'Lato',sans-serif;font-size:11px;letter-spacing:.18em;color:var(--menu-gray);text-decoration:none;text-transform:uppercase;display:flex;align-items:center;gap:8px;transition:color .3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--menu-gray)'">
+          ← Versió en espanyol
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ NOTA I18n ═══ -->
+  <section style="padding:80px;background:var(--black);border-bottom:1px solid var(--border);text-align:center;">
+    <div style="max-width:600px;margin:0 auto;">
+      <div style="font-family:'Lato',sans-serif;font-size:9px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:24px;">Versió en català</div>
+      <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(28px,4vw,42px);color:var(--white);font-weight:900;line-height:1.1;margin-bottom:20px;">
+        Pàgina en <em style="color:var(--gold);font-style:normal;">construcció</em>
+      </h2>
+      <div style="width:40px;height:1px;background:var(--gold);margin:0 auto 24px;"></div>
+      <p style="font-family:'Lato',sans-serif;font-size:16px;color:var(--white-dim);line-height:1.8;margin-bottom:36px;">
+        La versió completa en català d'aquesta web està en preparació.<br>
+        Mentrestant, pots accedir a tot el contingut en espanyol.
+      </p>
+      <a href="/" class="btn-primary">Veure la web en espanyol</a>
+    </div>
+  </section>
+
+  <!-- ═══ LLIBRES ═══ -->
+  <section style="padding:clamp(64px,10vw,140px) clamp(24px,6vw,80px);background:var(--carbon);">
+    <div style="max-width:var(--max-w);margin:0 auto;">
+      <div class="rv" style="margin-bottom:60px;text-align:center;">
+        <div class="s-label" style="justify-content:center;">L'Obra</div>
+        <h2 class="s-title" style="text-align:center;">L'univers <em>Moya Solà</em></h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;">
+        {[
+          { href: '/libros/swingers-magicfinger', num: 'I', title: 'Swingers:\nMagicfinger', status: 'Properament', genre: 'Thriller Psicològic' },
+          { href: '/libros/locked-in',            num: 'II', title: 'Locked In',              status: 'En producció',  genre: 'Thriller Psicològic' },
+          { href: '/libros/combustion',           num: 'III', title: 'Combustió',              status: 'Properament',  genre: 'Thriller Policial' },
+        ].map((b, i) => (
+          <a href={b.href} class={`rv${i>0?' d'+i:''}`} style="display:block;background:var(--charcoal);border:1px solid var(--border);padding:48px 36px;text-decoration:none;color:inherit;transition:border-color .4s;" onmouseover="this.style.borderColor='rgba(212,175,55,.6)'" onmouseout="this.style.borderColor='rgba(212,175,55,.18)'">
+            <div style="font-family:'Lato',sans-serif;font-size:8px;letter-spacing:.5em;color:var(--gold);margin-bottom:28px;text-transform:uppercase;">{b.num} · {b.status}</div>
+            <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:900;color:var(--white);line-height:1.1;margin-bottom:10px;white-space:pre-line;">{b.title}</div>
+            <div style="font-family:'Lato',sans-serif;font-size:11px;color:var(--gold);letter-spacing:.2em;margin-bottom:24px;">{b.genre}</div>
+            <div style="font-family:'Lato',sans-serif;font-size:11px;letter-spacing:.2em;color:var(--gold);">Llegir més →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CERCLE INTERIOR ═══ -->
+  <section style="padding:clamp(64px,10vw,140px) clamp(24px,6vw,80px);background:var(--black);text-align:center;">
+    <div style="max-width:560px;margin:0 auto;">
+      <div class="rv">
+        <div class="s-label" style="justify-content:center;">Comunitat privada</div>
+        <h2 class="s-title" style="text-align:center;">El <em>Cercle</em> Interior</h2>
+        <div style="width:40px;height:1px;background:var(--gold);margin:24px auto 28px;"></div>
+        <p style="font-family:'Lato',sans-serif;font-size:16px;color:var(--white-dim);line-height:1.9;margin-bottom:40px;">
+          No és un newsletter. És la cambra fosca on treballo.<br>
+          Uneix-te gratis i rep el capítol 1 complet de Swingers: Magicfinger.
+        </p>
+        <a href="/circulo-interior" class="btn-primary">Unir-me — accés gratuït</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>

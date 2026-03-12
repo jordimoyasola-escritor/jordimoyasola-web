@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "books":      "Books",
+    "about":      "About",
+    "reflections":"Reflections",
+    "circle":     "Inner Circle",
+    "press":      "Press",
+    "contact":    "Contact"
+  },
+  "hero": {
+    "eyebrow":    "Psychological thriller",
+    "typewriter": "The voice that will change how you read thrillers",
+    "manifesto":  "«There are truths that only emerge in darkness. Characters whose inner logic you find disturbingly understandable.»",
+    "cta_primary":"Read the first chapter — free",
+    "cta_ghost":  "Explore all books"
+  },
+  "stats": [
+    { "n": "13", "l": "Years building this universe" },
+    { "n": "3",  "l": "Novels in the Moya Solà universe" },
+    { "n": "2",  "l": "Languages · ES · CA" },
+    { "n": "1",  "l": "Expanding narrative universe" }
+  ],
+  "books": {
+    "label":    "The Work",
+    "title":    "The {em}Moya Solà{/em} universe",
+    "subtitle": "Three novels. Two connected worlds. A psychological territory that doesn't let the reader go."
+  },
+  "extracto": {
+    "label":     "004 — Chapter 1",
+    "title":     "Seven hundred {em}nights{/em}",
+    "book":      "Swingers: Magicfinger · Jordi Moya Solà",
+    "hook":      "Three pages left. The hardest ones.",
+    "sub":       "The full chapter is free. All you need is an email.",
+    "cta":       "Read the full chapter — free",
+    "link":      "View the book page"
+  },
+  "manifesto": {
+    "label": "On Psychological Thriller",
+    "quote": "«Darkness is not the absence of light. It is the space where people discover who they really are when no one is watching. That is what I write.»",
+    "attr":  "— Jordi Moya Solà · L'Ametlla del Vallès, Barcelona"
+  },
+  "circle": {
+    "label":     "Private Community",
+    "title":     "The Inner {em}Circle{/em}",
+    "body":      "Not a newsletter. It is the dark room where I work: what never makes it into the published book, the real process, the characters that didn't survive the editorial cut.",
+    "cta":       "Join — free access",
+    "badge":     "IMMEDIATE ACCESS",
+    "tagline":   "Step into the darkness.",
+    "benefits":  [
+      "Full Chapter 1 — immediate access",
+      "The protagonist's psychological file",
+      "Unpublished and discarded fragments",
+      "The real writing process",
+      "Priority access to new works"
+    ],
+    "disclaimer":"No spam · Unsubscribe anytime · GDPR"
+  },
+  "blog": {
+    "label": "Reflections",
+    "title": "Thinking out {em}loud{/em}",
+    "cta":   "View all"
+  },
+  "about": {
+    "label":  "About the author",
+    "title":  "Jordi Moya {em}Solà{/em}",
+    "quote":  "«I have spent thirteen years building characters who do things no one should fully understand — yet everyone does.»",
+    "bio1":   "Born in Granollers (Barcelona). Lives in L'Ametlla del Vallès, where he writes about what people do when no one is watching.",
+    "bio2":   "Specializing in high-intensity psychological thriller, his stories explore the space between who we are and who we choose to be under pressure.",
+    "cta":    "Read the full story"
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Let's talk without {em}noise{/em}",
+    "body":  "I read every message. I respond to the ones that require a response.",
+    "cta1":  "Write to Jordi",
+    "cta2":  "hola@jordimoyasola.com"
+  },
+  "modal": {
+    "title":             "Full Chapter 1",
+    "subtitle":          "Download the complete first chapter of Swingers: Magicfinger as a PDF. Free.",
+    "placeholder_name":  "Name *",
+    "placeholder_email": "Email address *",
+    "gdpr":              "I agree to receive the chapter and communications from the author. (GDPR)",
+    "submit":            "Download the full chapter",
+    "success":           "✓ Download started. Welcome to the Inner Circle.",
+    "error":             "Processing error. Write to us at hola@jordimoyasola.com",
+    "security":          "🔒 GDPR · No spam · Unsubscribe anytime"
+  },
+  "footer": {
+    "tagline": "Psychological thriller. Characters who lie. Endings that don't forgive.",
+    "copy":    "© {year} Jordi Moya Solà. All rights reserved.",
+    "cols": {
+      "books":       "Books",
+      "reflections": "Reflections",
+      "community":   "Community"
+    }
+  },
+  "cookie": {
+    "text":   "We use cookies for analytics and site functionality.",
+    "more":   "Cookie policy →",
+    "accept": "Accept all",
+    "reject": "Essential only"
+  },
+  "404": {
+    "label":   "Error 404",
+    "title":   "Page not {em}found{/em}",
+    "quote":   "«Some pages disappear without a trace. This is one of them.»",
+    "body":    "This page doesn't exist or has been moved.",
+    "cta1":    "Back to home",
+    "cta2":    "View the books"
+  }
+}
