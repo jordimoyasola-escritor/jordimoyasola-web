@@ -1,0 +1,131 @@
+---
+/**
+ * Base.astro — Layout raíz
+ * Props: title, description, ogImage, canonical, schema, lang
+ */
+import CookieBanner from '../components/CookieBanner.astro';
+
+export interface Props {
+  title:       string;
+  description: string;
+  ogImage?:    string;
+  canonical?:  string;
+  schema?:     object | object[];
+  lang?:       'es' | 'ca' | 'en';
+}
+
+const {
+  title,
+  description,
+  ogImage    = '/og-image.jpg',
+  canonical  = Astro.url.href,
+  schema,
+  lang       = 'es',
+} = Astro.props;
+
+const siteUrl  = 'https://www.jordimoyasola.com';
+const fullImage = ogImage.startsWith('http') ? ogImage : siteUrl + ogImage;
+
+const rawPath = Astro.url.pathname.replace(/^\/(ca|en)/, '') || '/';
+const hreflangs = [
+  { hreflang: 'es',        href: siteUrl + rawPath },
+  { hreflang: 'ca',        href: siteUrl + '/ca' + rawPath },
+  { hreflang: 'en',        href: siteUrl + '/en' + rawPath },
+  { hreflang: 'x-default', href: siteUrl + rawPath },
+];
+
+const ogLocale = lang === 'ca' ? 'ca_ES' : lang === 'en' ? 'en_US' : 'es_ES';
+---
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="author" content="Jordi Moya Solà">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href={canonical}>
+
+  {hreflangs.map(h => (
+    <link rel="alternate" hreflang={h.hreflang} href={h.href} />
+  ))}
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={fullImage}>
+  <meta property="og:locale" content={ogLocale}>
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={fullImage}>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231a1a1a'/%3E%3Ctext x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-style='italic' fill='%23D4AF37' text-anchor='middle' dominant-baseline='central'%3EJ%3C/text%3E%3C/svg%3E">
+
+  {schema && (
+    Array.isArray(schema)
+      ? schema.map(s => <script type="application/ld+json" set:html={JSON.stringify(s)} />)
+      : <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  )}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/global.css">
+</head>
+<body>
+  <div id="prog"></div>
+  <div id="cur"></div>
+  <div id="cur-r"></div>
+
+  <CookieBanner />
+  <slot name="nav" />
+  <main><slot /></main>
+  <slot name="footer" />
+
+  <script>
+    const isTouchOnly = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (!isTouchOnly) {
+      document.documentElement.classList.add('js-custom-cursor');
+      const cur  = document.getElementById('cur');
+      const curR = document.getElementById('cur-r');
+      let mx = 0, my = 0, rx = 0, ry = 0;
+      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+      const loop = () => {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        if (cur)  cur.style.cssText  = `left:${mx}px;top:${my}px;`;
+        if (curR) curR.style.cssText = `left:${rx}px;top:${ry}px;`;
+        requestAnimationFrame(loop);
+      };
+      loop();
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => { if (curR) { curR.style.width = '50px'; curR.style.height = '50px'; } });
+        el.addEventListener('mouseleave', () => { if (curR) { curR.style.width = '34px'; curR.style.height = '34px'; } });
+      });
+    }
+    const prog = document.getElementById('prog');
+    window.addEventListener('scroll', () => {
+      const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      if (prog) prog.style.width = pct + '%';
+    }, { passive: true });
+    const revealObserver = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
+      { threshold: 0.08 }
+    );
+    document.querySelectorAll('.rv').forEach(el => revealObserver.observe(el));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('[data-modal]').forEach(m => {
+          m.style.display = 'none';
+        });
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+</body>
+</html>
