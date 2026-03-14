@@ -38,14 +38,26 @@ const authorSchema = {
   "@type": "Person",
   "@id": `${siteUrl}/#author`,
   "name": "Jordi Moya Solà",
+  "alternateName": "Jordi Moya",
   "url": siteUrl,
   "image": `${siteUrl}/foto-autor.jpg`,
   "jobTitle": "Escritor",
-  "description": "Jordi Moya Solà es escritor de thriller psicológico, suspense contemporáneo y ficción de alta intensidad emocional.",
+  "description": "Jordi Moya Solà es escritor de thriller psicológico, suspense contemporáneo, novela negra y ficción de alta intensidad emocional.",
   "sameAs": [
     siteUrl,
     "https://www.goodreads.com/author/show/jordimoyasola"
-  ]
+  ],
+  "knowsAbout": [
+    "thriller psicológico",
+    "suspense contemporáneo",
+    "novela negra",
+    "ficción literaria",
+    "narrativa de alta intensidad emocional"
+  ],
+  "hasOccupation": {
+    "@type": "Occupation",
+    "name": "Escritor"
+  }
 };
 
 const websiteSchema = {
@@ -59,6 +71,22 @@ const websiteSchema = {
     "@id": `${siteUrl}/#author`
   },
   "inLanguage": lang
+};
+
+const worksSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${siteUrl}/#works`,
+  "url": `${siteUrl}/libros`,
+  "name": "Libros de Jordi Moya Solà",
+  "description": "Colección de novelas y libros de Jordi Moya Solà.",
+  "about": {
+    "@id": `${siteUrl}/#author`
+  },
+  "isPartOf": {
+    "@id": `${siteUrl}/#website`
+  },
+  "inLanguage": "es"
 };
 
 const pageSchema = {
@@ -82,7 +110,7 @@ const pageSchema = {
 };
 
 const extraSchemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
-const mergedSchemas = [authorSchema, websiteSchema, pageSchema, ...extraSchemas];
+const mergedSchemas = [authorSchema, websiteSchema, worksSchema, pageSchema, ...extraSchemas];
 ---
 
 <!DOCTYPE html>
