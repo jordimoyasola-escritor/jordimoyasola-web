@@ -20,7 +20,7 @@ const {
   lang = 'es',
 } = Astro.props;
 
-const siteUrl = 'https://www.jordimoyasola.com';
+const siteUrl = 'https://jordimoyasola.com';
 const fullImage = ogImage.startsWith('http') ? ogImage : siteUrl + ogImage;
 
 const rawPath = Astro.url.pathname.replace(/^\/(ca|en)/, '') || '/';
@@ -32,162 +32,184 @@ const hreflangs = [
 ];
 
 const ogLocale = lang === 'ca' ? 'ca_ES' : lang === 'en' ? 'en_US' : 'es_ES';
+
+const authorSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${siteUrl}/#author`,
+  "name": "Jordi Moya Solà",
+  "url": siteUrl,
+  "image": `${siteUrl}/foto-autor.jpg`,
+  "jobTitle": "Escritor",
+  "description": "Jordi Moya Solà es escritor de thriller psicológico, suspense contemporáneo y ficción de alta intensidad emocional.",
+  "sameAs": [
+    siteUrl,
+    "https://www.goodreads.com/author/show/jordimoyasola"
+  ]
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  "url": siteUrl,
+  "name": "Jordi Moya Solà",
+  "description": "Web oficial del escritor Jordi Moya Solà.",
+  "publisher": {
+    "@id": `${siteUrl}/#author`
+  },
+  "inLanguage": lang
+};
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${canonical}#webpage`,
+  "url": canonical,
+  "name": title,
+  "description": description,
+  "isPartOf": {
+    "@id": `${siteUrl}/#website`
+  },
+  "about": {
+    "@id": `${siteUrl}/#author`
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": fullImage
+  },
+  "inLanguage": lang
+};
+
+const extraSchemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
+const mergedSchemas = [authorSchema, websiteSchema, pageSchema, ...extraSchemas];
 ---
 
 <!DOCTYPE html>
 <html lang={lang}>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>{title}</title>
-<meta name="description" content={description}>
-<meta name="author" content="Jordi Moya Solà">
-<meta name="robots" content="index, follow">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="author" content="Jordi Moya Solà">
+  <meta name="robots" content="index, follow">
 
-<link rel="canonical" href={canonical}>
+  <link rel="canonical" href={canonical}>
 
-{hreflangs.map(h => (
-<link rel="alternate" hreflang={h.hreflang} href={h.href} />
-))}
+  {hreflangs.map(h => (
+    <link rel="alternate" hreflang={h.hreflang} href={h.href} />
+  ))}
 
-<meta property="og:type" content="website">
-<meta property="og:title" content={title}>
-<meta property="og:description" content={description}>
-<meta property="og:url" content={canonical}>
-<meta property="og:image" content={fullImage}>
-<meta property="og:locale" content={ogLocale}>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={fullImage}>
+  <meta property="og:locale" content={ogLocale}>
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content={title}>
-<meta name="twitter:description" content={description}>
-<meta name="twitter:image" content={fullImage}>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={fullImage}>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-
-{schema && (
-Array.isArray(schema)
-? schema.map(s => <script type="application/ld+json" set:html={JSON.stringify(s)} />)
-: <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-)}
-
+  {mergedSchemas.map((item) => (
+    <script type="application/ld+json" set:html={JSON.stringify(item)} />
+  ))}
 </head>
 
 <body>
+  <div id="prog"></div>
+  <div id="cur"></div>
+  <div id="cur-r"></div>
 
-<div id="prog"></div>
-<div id="cur"></div>
-<div id="cur-r"></div>
+  <CookieBanner />
 
-<CookieBanner />
+  <slot name="nav" />
 
-<slot name="nav" />
+  <main>
+    <slot />
+  </main>
 
-<main>
-<slot />
-</main>
+  <slot name="footer" />
 
-<slot name="footer" />
+  <script>
+    const isTouchOnly = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
-<script>
+    if (!isTouchOnly) {
+      document.documentElement.classList.add('js-custom-cursor');
 
-const isTouchOnly = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+      const cur = document.getElementById('cur');
+      const curR = document.getElementById('cur-r');
 
-if (!isTouchOnly) {
+      let mx = 0;
+      let my = 0;
+      let rx = 0;
+      let ry = 0;
 
-document.documentElement.classList.add('js-custom-cursor');
+      document.addEventListener('mousemove', e => {
+        mx = e.clientX;
+        my = e.clientY;
+      });
 
-const cur = document.getElementById('cur');
-const curR = document.getElementById('cur-r');
+      const loop = () => {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
 
-let mx = 0;
-let my = 0;
-let rx = 0;
-let ry = 0;
+        if (cur) cur.style.cssText = `left:${mx}px;top:${my}px;`;
+        if (curR) curR.style.cssText = `left:${rx}px;top:${ry}px;`;
 
-document.addEventListener('mousemove', e => {
-mx = e.clientX;
-my = e.clientY;
-});
+        requestAnimationFrame(loop);
+      };
 
-const loop = () => {
-rx += (mx - rx) * 0.12;
-ry += (my - ry) * 0.12;
+      loop();
 
-if (cur) cur.style.cssText = `left:${mx}px;top:${my}px;`;
-if (curR) curR.style.cssText = `left:${rx}px;top:${ry}px;`;
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          if (curR) {
+            curR.style.width = '50px';
+            curR.style.height = '50px';
+          }
+        });
 
-requestAnimationFrame(loop);
-};
+        el.addEventListener('mouseleave', () => {
+          if (curR) {
+            curR.style.width = '34px';
+            curR.style.height = '34px';
+          }
+        });
+      });
+    }
 
-loop();
+    const prog = document.getElementById('prog');
 
-document.querySelectorAll('a, button').forEach(el => {
+    window.addEventListener('scroll', () => {
+      const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      if (prog) prog.style.width = pct + '%';
+    }, { passive: true });
 
-el.addEventListener('mouseenter', () => {
-if (curR) {
-curR.style.width = '50px';
-curR.style.height = '50px';
-}
-});
+    const revealObserver = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('vis');
+      }),
+      { threshold: 0.08 }
+    );
 
-el.addEventListener('mouseleave', () => {
-if (curR) {
-curR.style.width = '34px';
-curR.style.height = '34px';
-}
-});
+    document.querySelectorAll('.rv').forEach(el => revealObserver.observe(el));
 
-});
-
-}
-
-const prog = document.getElementById('prog');
-
-window.addEventListener('scroll', () => {
-
-const pct =
-(window.scrollY /
-(document.body.scrollHeight - window.innerHeight)) * 100;
-
-if (prog) prog.style.width = pct + '%';
-
-}, { passive: true });
-
-const revealObserver = new IntersectionObserver(
-
-entries => entries.forEach(e => {
-
-if (e.isIntersecting) e.target.classList.add('vis');
-
-}),
-
-{ threshold: 0.08 }
-
-);
-
-document.querySelectorAll('.rv').forEach(el => revealObserver.observe(el));
-
-document.addEventListener('keydown', e => {
-
-if (e.key === 'Escape') {
-
-document.querySelectorAll('[data-modal]').forEach(m => {
-
-m.style.display = 'none';
-
-});
-
-document.body.style.overflow = '';
-
-}
-
-});
-
-</script>
-
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('[data-modal]').forEach(m => {
+          m.style.display = 'none';
+        });
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
 </body>
 </html>
