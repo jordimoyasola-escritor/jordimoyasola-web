@@ -12,21 +12,35 @@ const schema = {
   "@type": "Book",
   "name": "Combustión",
   "alternateName": "La caza del Penitente",
-  "author": { "@type": "Person", "name": "Jordi Moya Solà", "url": "https://www.jordimoyasola.com" },
+  "author": {
+    "@type": "Person",
+    "name": "Jordi Moya Solà",
+    "url": "https://jordimoyasola.com",
+    "sameAs": [
+      "https://jordimoyasola.com",
+      "https://www.goodreads.com/author/show/jordimoyasola"
+    ]
+  },
   "genre": ["Thriller policial", "Novela negra"],
   "inLanguage": "es",
-  "url": "https://www.jordimoyasola.com/libros/combustion",
+  "url": "https://jordimoyasola.com/libros/combustion",
   "datePublished": "2026",
   "numberOfPages": 300,
+  "bookFormat": "https://schema.org/Paperback",
   "description": "Barcelona, 2010. El inspector Ferrán Alavedra investiga una serie de crímenes imposibles. Una novela sobre el origen de la violencia como sistema.",
-  "locationCreated": { "@type": "Place", "name": "Barcelona, España" }
+  "image": "https://jordimoyasola.com/og-image.jpg",
+  "locationCreated": {
+    "@type": "Place",
+    "name": "Barcelona, España"
+  }
 };
 ---
 
 <Base
   title="Combustión — Jordi Moya Solà · La caza del Penitente"
   description="Barcelona, 2010. El inspector Ferrán Alavedra investiga dos crímenes imposibles: quemados desde dentro, sin rastro de acelerador. Una novela sobre el origen de la violencia como sistema. Jordi Moya Solà."
-  canonical="https://www.jordimoyasola.com/libros/combustion"
+  canonical="https://jordimoyasola.com/libros/combustion"
+  ogImage="/og-image.jpg"
   schema={schema}
 >
   <Nav slot="nav" currentPath="/libros" />
