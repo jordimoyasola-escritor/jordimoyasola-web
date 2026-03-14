@@ -12,21 +12,31 @@ const schema = {
   "@type": "Book",
   "name": "Locked In",
   "alternateName": "La Prisión del Silencio",
-  "author": { "@type": "Person", "name": "Jordi Moya Solà", "url": "https://www.jordimoyasola.com" },
+  "author": {
+    "@type": "Person",
+    "name": "Jordi Moya Solà",
+    "url": "https://jordimoyasola.com",
+    "sameAs": [
+      "https://jordimoyasola.com",
+      "https://www.goodreads.com/author/show/jordimoyasola"
+    ]
+  },
   "genre": ["Thriller psicológico", "Ficción literaria"],
   "inLanguage": "es",
-  "url": "https://www.jordimoyasola.com/libros/locked-in",
+  "url": "https://jordimoyasola.com/libros/locked-in",
   "datePublished": "2026",
   "numberOfPages": 288,
   "bookFormat": "https://schema.org/Paperback",
   "description": "Diagnosticado con el síndrome de enclaustramiento, Damián puede escuchar, sentir y razonar, pero no puede comunicarse. Un thriller sobre la identidad y el silencio.",
+  "image": "https://jordimoyasola.com/og-image.jpg"
 };
 ---
 
 <Base
   title="Locked In — Jordi Moya Solà · La Prisión del Silencio"
   description="Diagnosticado con el síndrome de enclaustramiento, Damián puede escuchar, sentir y razonar con una claridad demoledora. Pero no puede decirle al mundo que sigue ahí. Un thriller de Jordi Moya Solà."
-  canonical="https://www.jordimoyasola.com/libros/locked-in"
+  canonical="https://jordimoyasola.com/libros/locked-in"
+  ogImage="/og-image.jpg"
   schema={schema}
 >
   <Nav slot="nav" currentPath="/libros" />
