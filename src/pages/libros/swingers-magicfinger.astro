@@ -14,7 +14,11 @@ const schema = {
   "author": {
     "@type": "Person",
     "name": "Jordi Moya Solà",
-    "url": "https://www.jordimoyasola.com"
+    "url": "https://jordimoyasola.com",
+    "sameAs": [
+      "https://jordimoyasola.com",
+      "https://www.goodreads.com/author/show/jordimoyasola"
+    ]
   },
   "publisher": {
     "@type": "Organization",
@@ -23,12 +27,17 @@ const schema = {
   },
   "genre": ["Thriller psicológico", "Thriller erótico"],
   "inLanguage": "es",
-  "url": "https://www.jordimoyasola.com/libros/swingers-magicfinger",
+  "url": "https://jordimoyasola.com/libros/swingers-magicfinger",
   "datePublished": "2026",
   "numberOfPages": 320,
   "bookFormat": "https://schema.org/Paperback",
   "description": "Tras una infidelidad, Leo y Clara intentan salvar su matrimonio adentrándose en el mundo oculto del intercambio de parejas. Una espiral de secretos, obsesión y manipulación.",
-  "workExample": { "@type": "Book", "bookFormat": "https://schema.org/EBook", "inLanguage": "es" }
+  "image": "https://jordimoyasola.com/og-swingers.jpg",
+  "workExample": {
+    "@type": "Book",
+    "bookFormat": "https://schema.org/EBook",
+    "inLanguage": "es"
+  }
 };
 ---
 
@@ -36,7 +45,7 @@ const schema = {
   title="Swingers: Magicfinger — Jordi Moya Solà · Thriller Psicológico"
   description="Tras una infidelidad que resquebraja los cimientos de su vida, Leo y Clara se adentran en el mundo oculto del intercambio de parejas. Una espiral de secretos y obsesión. Descarga gratis el primer capítulo."
   ogImage="/og-swingers.jpg"
-  canonical="https://www.jordimoyasola.com/libros/swingers-magicfinger"
+  canonical="https://jordimoyasola.com/libros/swingers-magicfinger"
   schema={schema}
 >
   <Nav slot="nav" currentPath="/libros" />
