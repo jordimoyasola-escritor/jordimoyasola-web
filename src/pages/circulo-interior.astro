@@ -12,7 +12,7 @@ import Footer from '../components/Footer.astro';
 <Base
   title="Círculo Interior — Jordi Moya Solà · Acceso Exclusivo"
   description="Únete al Círculo Interior de Jordi Moya Solà. Acceso inmediato al primer capítulo completo, el archivo psicológico del protagonista y el proceso real de escritura. Gratuito."
-  canonical="https://www.jordimoyasola.com/circulo-interior"
+  canonical="https://jordimoyasola.com/circulo-interior"
 >
   <Nav slot="nav" currentPath="/circulo-interior" />
 
@@ -110,14 +110,61 @@ import Footer from '../components/Footer.astro';
             </p>
 
             <form id="form-circulo" onsubmit="submitCircleForm(event)">
-              <div class="form-field"><input type="text" id="ci-name" placeholder="Nombre completo *" required></div>
-              <div class="form-field"><input type="email" id="ci-email" placeholder="Correo electrónico *" required></div>
-              <div class="form-field" style="display:flex;align-items:flex-start;gap:12px;padding:6px 0 14px;">
-                <input type="checkbox" id="gdpr-ci" required style="width:auto;margin-top:3px;accent-color:#D4AF37;">
-                <label for="gdpr-ci" style="font-family:var(--sans);font-size:12px;color:var(--menu-gray);line-height:1.6;cursor:pointer;">
-                  Acepto recibir comunicaciones del Círculo Interior. He leído la <a href="/privacidad" style="color:var(--gold);">Política de Privacidad</a>. Puedo darme de baja en cualquier momento. (RGPD)
+              <div class="form-field">
+                <input type="text" id="ci-name" placeholder="Nombre completo *" required>
+              </div>
+
+              <div class="form-field">
+                <input type="email" id="ci-email" placeholder="Correo electrónico *" required>
+              </div>
+
+              <!-- RGPD CORREGIDO -->
+              <div style="display:flex;align-items:flex-start;gap:12px;padding:8px 0 18px;position:relative;z-index:5;">
+                <input
+                  type="checkbox"
+                  id="gdpr-ci"
+                  name="gdpr"
+                  required
+                  style="
+                    appearance:auto;
+                    -webkit-appearance:checkbox;
+                    width:18px;
+                    height:18px;
+                    margin:2px 0 0 0;
+                    accent-color:#D4AF37;
+                    cursor:pointer;
+                    flex-shrink:0;
+                    position:relative;
+                    z-index:6;
+                    pointer-events:auto;
+                  "
+                />
+
+                <label
+                  for="gdpr-ci"
+                  style="
+                    font-family:var(--sans);
+                    font-size:12px;
+                    color:var(--menu-gray);
+                    line-height:1.6;
+                    cursor:pointer;
+                    user-select:none;
+                    position:relative;
+                    z-index:6;
+                    pointer-events:auto;
+                  "
+                >
+                  Acepto recibir comunicaciones del Círculo Interior. He leído la
+                  <a
+                    href="/privacidad"
+                    style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(212,175,55,.35);"
+                  >
+                    Política de Privacidad
+                  </a>.
+                  Puedo darme de baja en cualquier momento. (RGPD)
                 </label>
               </div>
+
               <button type="submit" class="form-submit" id="ci-submit">Unirme al Círculo Interior</button>
               <div id="ci-msg" style="display:none;margin-top:14px;font-family:var(--sans);font-size:13px;text-align:center;"></div>
             </form>
@@ -166,25 +213,52 @@ import Footer from '../components/Footer.astro';
     e.preventDefault();
     const btn = document.getElementById('ci-submit');
     const msg = document.getElementById('ci-msg');
-    btn.textContent = 'Procesando...'; btn.disabled = true;
+    btn.textContent = 'Procesando...';
+    btn.disabled = true;
+
     try {
       if (SUPABASE_URL && SUPABASE_KEY) {
         const res = await fetch(SUPABASE_URL + '/rest/v1/circle_members', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Prefer': 'return=minimal' },
-          body: JSON.stringify({ name: document.getElementById('ci-name').value, email: document.getElementById('ci-email').value, source: 'web-circulo', gdpr_accepted: true, active: true, created_at: new Date().toISOString() })
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_KEY,
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({
+            name: document.getElementById('ci-name').value,
+            email: document.getElementById('ci-email').value,
+            source: 'web-circulo',
+            gdpr_accepted: true,
+            active: true,
+            created_at: new Date().toISOString()
+          })
         });
-        if (res.status === 409) { msg.style.display='block'; msg.style.color='var(--gold)'; msg.textContent='Ya eres miembro del Círculo Interior.'; btn.textContent='✓ Ya registrado'; return; }
+
+        if (res.status === 409) {
+          msg.style.display = 'block';
+          msg.style.color = 'var(--gold)';
+          msg.textContent = 'Ya eres miembro del Círculo Interior.';
+          btn.textContent = '✓ Ya registrado';
+          return;
+        }
       }
-      msg.style.display = 'block'; msg.style.color = 'var(--gold)';
+
+      msg.style.display = 'block';
+      msg.style.color = 'var(--gold)';
       msg.textContent = '✓ Bienvenido al Círculo Interior. Revisa tu correo.';
       btn.textContent = '✓ Eres del Círculo';
       document.getElementById('form-circulo').reset();
-    } catch(err) {
-      msg.style.display = 'block'; msg.style.color = '#ff6b6b';
+
+    } catch (err) {
+      msg.style.display = 'block';
+      msg.style.color = '#ff6b6b';
       msg.textContent = 'Error al registrar. Escríbenos a contacto@jordimoyasola.com';
-      btn.textContent = 'Reintentar'; btn.disabled = false;
+      btn.textContent = 'Reintentar';
+      btn.disabled = false;
     }
   }
+
   window.submitCircleForm = submitCircleForm;
 </script>
