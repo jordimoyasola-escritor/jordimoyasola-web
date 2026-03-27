@@ -201,6 +201,15 @@ body::after {
   transition: border-color .3s;
   -webkit-appearance: none;
 }
+.form-field input[type="checkbox"] {
+  width: auto;
+  -webkit-appearance: checkbox;
+  appearance: checkbox;
+  background: transparent;
+  border: none;
+  padding: 0;
+  accent-color: #D4AF37;
+}
 .form-field input::placeholder,
 .form-field textarea::placeholder { color: var(--white-dim); font-style: italic; font-size: 15px; }
 .form-field input:focus,
