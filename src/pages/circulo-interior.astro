@@ -153,7 +153,7 @@ import Footer from '../components/Footer.astro';
                   "
                 >
                   Acepto recibir comunicaciones del Círculo Interior. He leído la
-                  <a
+                  
                     href="/privacidad"
                     style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(212,175,55,.35);"
                   >
@@ -193,95 +193,4 @@ import Footer from '../components/Footer.astro';
       <h2 class="s-title rv" style="text-align:center;">El Archivo<br>Psicológico de <em>Leo</em></h2>
       <div class="gold-bar rv" style="margin:0 auto 40px;"></div>
       <p class="rv" style="font-family:var(--serif);font-size:20px;font-style:italic;color:var(--white-dim);line-height:1.7;margin-bottom:48px;">
-        «Estas son las notas que escribí sobre Leo antes de que el personaje tuviera nombre. Son anteriores al libro. Son, en cierto modo, más reales que el libro.»
-      </p>
-      <a href="#form" class="btn-primary rv">Acceder gratis ahora</a>
-    </div>
-  </section>
-
-  <Footer slot="footer" />
-</Base>
-
-<script>
-  const SUPABASE_URL = 'https://yvbysknlztkcxrcnsczj.supabase.co';
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl2Ynlza25senRrY3hyY25zY3pqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3MzE2MzksImV4cCI6MjA4ODMwNzYzOX0._hqy4tFj-zkfqJapGfK9p_BH4EQvIMeBzYGtYlwhSVE';
-
-  async function submitCircleForm(e) {
-    e.preventDefault();
-
-    const btn = document.getElementById('ci-submit');
-    const msg = document.getElementById('ci-msg');
-    const form = document.getElementById('form-circulo');
-
-    const name = document.getElementById('ci-name').value.trim();
-    const email = document.getElementById('ci-email').value.trim();
-    const gdpr = document.getElementById('gdpr-ci').checked;
-
-    msg.style.display = 'none';
-    msg.textContent = '';
-    btn.textContent = 'Procesando...';
-    btn.disabled = true;
-
-    try {
-      if (!name || !email || !gdpr) {
-        throw new Error('Completa todos los campos y acepta la política de privacidad.');
-      }
-
-      const response = await fetch(SUPABASE_URL + '/rest/v1/circle_members', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_KEY,
-          'Authorization': 'Bearer ' + SUPABASE_KEY,
-          'Prefer': 'return=representation'
-        },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          source: 'web-circulo',
-          gdpr_accepted: true,
-          active: true,
-          created_at: new Date().toISOString()
-        })
-      });
-
-      const responseText = await response.text();
-
-      if (response.status === 409) {
-        msg.style.display = 'block';
-        msg.style.color = 'var(--gold)';
-        msg.textContent = 'Ya eres miembro del Círculo Interior.';
-        btn.textContent = '✓ Ya registrado';
-        return;
-      }
-
-      if (!response.ok) {
-        console.error('Supabase error:', response.status, responseText);
-        throw new Error(`Supabase respondió con error ${response.status}`);
-      }
-
-      msg.style.display = 'block';
-      msg.style.color = 'var(--gold)';
-      msg.textContent = '✓ Bienvenido al Círculo Interior. Revisa tu correo.';
-      btn.textContent = '✓ Eres del Círculo';
-      form.reset();
-
-    } catch (err) {
-      console.error('Error al registrar en círculo:', err);
-
-      msg.style.display = 'block';
-      msg.style.color = '#ff6b6b';
-
-      if (err.message.includes('409')) {
-        msg.textContent = 'Ya eres miembro del Círculo Interior.';
-        btn.textContent = '✓ Ya registrado';
-      } else {
-        msg.textContent = 'Error al registrar. Escríbenos a contacto@jordimoyasola.com';
-        btn.textContent = 'Reintentar';
-        btn.disabled = false;
-      }
-    }
-  }
-
-  window.submitCircleForm = submitCircleForm;
-</script>
+        «Estas son las notas que escribí sobre Leo antes de que el personaje tuviera nombr
