@@ -9,6 +9,7 @@ export interface Props {
   canonical?: string;
   schema?: object | object[];
   lang?: 'es' | 'ca' | 'en';
+  noAudio?: boolean;
 }
 
 const {
@@ -18,6 +19,7 @@ const {
   canonical = Astro.url.href,
   schema,
   lang = 'es',
+  noAudio = false,
 } = Astro.props;
 
 const siteUrl = 'https://jordimoyasola.com';
@@ -167,78 +169,158 @@ const mergedSchemas = [authorSchema, websiteSchema, worksSchema, pageSchema, ...
 
   <slot name="footer" />
 
+  <!-- ═══ REPRODUCTOR FLOTANTE GLOBAL ═══ -->
+  {!noAudio && (
+    <>
+      <audio id="global-audio" loop preload="auto">
+        <source src="/soundtrack-swingers.mp3" type="audio/mpeg" />
+      </audio>
+
+      <div id="global-player" style="
+        position:fixed;bottom:32px;right:32px;
+        z-index:9999;
+        background:#1a1a16;
+        border:1px solid rgba(212,175,55,.35);
+        padding:14px 18px;
+        display:flex;align-items:center;gap:14px;
+        box-shadow:0 8px 40px rgba(0,0,0,.7);
+        min-width:220px;
+        opacity:0;
+        transition:opacity .6s;
+      ">
+        <button id="gp-play" aria-label="Play/Pause" style="
+          width:34px;height:34px;
+          border:1px solid rgba(212,175,55,.5);
+          background:none;cursor:pointer;flex-shrink:0;
+          display:flex;align-items:center;justify-content:center;
+          transition:border-color .3s;
+        ">
+          <svg id="gp-icon-play" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#D4AF37"><polygon points="5,3 19,12 5,21"/></svg>
+          <svg id="gp-icon-pause" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#D4AF37" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+
+        <div style="flex:1;min-width:0;">
+          <div style="font-family:'Lato',sans-serif;font-size:7px;letter-spacing:.3em;color:#D4AF37;text-transform:uppercase;margin-bottom:2px;">Banda Sonora</div>
+          <div style="font-family:'Playfair Display',serif;font-size:12px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Jordi Moya Solà</div>
+          <div id="gp-bar" style="height:2px;background:rgba(255,255,255,.08);margin-top:7px;cursor:pointer;">
+            <div id="gp-fill" style="height:100%;width:0%;background:#D4AF37;transition:width .1s linear;"></div>
+          </div>
+        </div>
+
+        <button id="gp-mute" aria-label="Silencio/Sonido" style="background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0;">
+          <svg id="gp-icon-muted" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+          </svg>
+          <svg id="gp-icon-sound" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" style="display:none">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+          </svg>
+        </button>
+
+        <button onclick="document.getElementById('global-player').style.display='none';document.getElementById('global-audio').pause();" aria-label="Cerrar" style="
+          background:none;border:none;cursor:pointer;
+          color:#666;font-size:14px;padding:0;flex-shrink:0;
+          line-height:1;transition:color .3s;
+        ">✕</button>
+      </div>
+    </>
+  )}
+
   <script>
+    // ═══ CURSOR & SCROLL ═══
     const isTouchOnly = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
     if (!isTouchOnly) {
       document.documentElement.classList.add('js-custom-cursor');
-
       const cur = document.getElementById('cur');
       const curR = document.getElementById('cur-r');
-
-      let mx = 0;
-      let my = 0;
-      let rx = 0;
-      let ry = 0;
-
-      document.addEventListener('mousemove', e => {
-        mx = e.clientX;
-        my = e.clientY;
-      });
-
+      let mx = 0, my = 0, rx = 0, ry = 0;
+      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
       const loop = () => {
-        rx += (mx - rx) * 0.12;
-        ry += (my - ry) * 0.12;
-
+        rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
         if (cur) cur.style.cssText = `left:${mx}px;top:${my}px;`;
         if (curR) curR.style.cssText = `left:${rx}px;top:${ry}px;`;
-
         requestAnimationFrame(loop);
       };
-
       loop();
-
       document.querySelectorAll('a, button').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-          if (curR) {
-            curR.style.width = '50px';
-            curR.style.height = '50px';
-          }
-        });
-
-        el.addEventListener('mouseleave', () => {
-          if (curR) {
-            curR.style.width = '34px';
-            curR.style.height = '34px';
-          }
-        });
+        el.addEventListener('mouseenter', () => { if (curR) { curR.style.width='50px'; curR.style.height='50px'; }});
+        el.addEventListener('mouseleave', () => { if (curR) { curR.style.width='34px'; curR.style.height='34px'; }});
       });
     }
 
     const prog = document.getElementById('prog');
-
     window.addEventListener('scroll', () => {
       const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
       if (prog) prog.style.width = pct + '%';
     }, { passive: true });
 
     const revealObserver = new IntersectionObserver(
-      entries => entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('vis');
-      }),
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
       { threshold: 0.08 }
     );
-
     document.querySelectorAll('.rv').forEach(el => revealObserver.observe(el));
 
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
-        document.querySelectorAll('[data-modal]').forEach(m => {
-          m.style.display = 'none';
-        });
+        document.querySelectorAll('[data-modal]').forEach(m => { m.style.display = 'none'; });
         document.body.style.overflow = '';
       }
     });
+
+    // ═══ REPRODUCTOR GLOBAL ═══
+    const audio = document.getElementById('global-audio');
+    const player = document.getElementById('global-player');
+    if (audio && player) {
+      audio.muted = true;
+      audio.play().catch(() => {});
+
+      // Mostrar reproductor con fade después de 1s
+      setTimeout(() => { player.style.opacity = '1'; }, 1000);
+
+      let isPlaying = true;
+      let isMuted = true;
+
+      const btnPlay     = document.getElementById('gp-play');
+      const iconPlay    = document.getElementById('gp-icon-play');
+      const iconPause   = document.getElementById('gp-icon-pause');
+      const btnMute     = document.getElementById('gp-mute');
+      const iconMuted   = document.getElementById('gp-icon-muted');
+      const iconSound   = document.getElementById('gp-icon-sound');
+      const fill        = document.getElementById('gp-fill');
+      const bar         = document.getElementById('gp-bar');
+
+      function syncPlay() {
+        iconPlay.style.display  = isPlaying ? 'none' : 'block';
+        iconPause.style.display = isPlaying ? 'block' : 'none';
+      }
+      function syncMute() {
+        iconMuted.style.display = isMuted ? 'block' : 'none';
+        iconSound.style.display = isMuted ? 'none' : 'block';
+      }
+
+      btnPlay.addEventListener('click', () => {
+        isPlaying = !isPlaying;
+        isPlaying ? audio.play() : audio.pause();
+        syncPlay();
+      });
+
+      btnMute.addEventListener('click', () => {
+        isMuted = !isMuted;
+        audio.muted = isMuted;
+        syncMute();
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        if (audio.duration) fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      });
+
+      bar.addEventListener('click', e => {
+        const rect = bar.getBoundingClientRect();
+        audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+      });
+    }
   </script>
 </body>
 </html>
